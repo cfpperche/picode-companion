@@ -1,8 +1,15 @@
-# PiCode Companion — C.03 mechanical visualization
+# PiCode Companion — C.04 mechanical visualization
 
 This revision improves the interior and keeps the rounded cyberpunk enclosure, top speaker and four left-side acoustic ports. Units are millimetres. It is **not released for manufacturing**.
 
-## What changed
+## C.04 rotating head
+
+See [ROTATING_HEAD.md](ROTATING_HEAD.md) for the yaw mechanism, component BOM,
+power and control changes, load assumptions, assembly and validation limits.
+The original C.03 head moves intact on a bearing-supported tray. The base now
+measures 160 mm wide; the overall neutral height is 224 mm.
+
+## C.03 interior retained
 
 - ReSpeaker simplified disc replaced with 580 native-scale solids tessellated from the manufacturer's STEP, including the optional XIAO in that file. Materials are illustrative. The variant has not been frozen for purchasing.
 - Separate inter-board connector reserves replace the solid block between CM5 and carrier.
@@ -26,7 +33,7 @@ Python dependencies: numpy, trimesh, manifold3d, shapely, mapbox_earcut, matplot
 ```sh
 python hardware/prepare_supplier.py  # first build; requires cadquery-ocp
 python hardware/build_model.py
-cp hardware/meshes.b64 public/assets/companion-c03.b64
+cp hardware/meshes.b64 public/assets/companion-c04.b64
 python scripts/build_locales.py
 ```
 
@@ -43,10 +50,10 @@ Compress the resulting JSON with gzip and base64 to `respeaker-native.json.gz.b6
 ## Proposed assembly order
 
 1. Assemble and verify the CM5/carrier stack on the bench. Confirm underside connectors against the actual board.
-2. Attach the compute cradle to the rear deck; confirm connector access and board clearance before fixing the stack.
+2. Attach the compute cradle to the rotating tray; confirm connector access and board clearance before fixing the stack.
 3. Fit display and camera in their edge supports, then connect CSI and display cables while the front is accessible.
 4. Fit the complete microphone board to the left side and check every inlet against its sealing duct.
 5. Fit speaker and gasket to the acoustic baffle; connect the amplified output from the audio board.
-6. Route and secure cables, then close the body and install the recessed top grille.
+6. Follow the C.04 rotating-head assembly steps before routing the flex harness and closing the covers.
 
 Before producing functional STL: resolve the carrier geometry, select the speaker/cooling/light modules, validate all supports and fasteners, perform full interference checks, and test acoustic isolation and temperature on the assembled prototype.

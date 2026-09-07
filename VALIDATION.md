@@ -29,3 +29,21 @@ The initial release's public HTTP checks are retained in `http-verification.json
 - EN, PT and ES catalogs and generated HTML passed existing checks; runtime translation checks passed.
 - Chromium visual inspection: exterior, interior, isolated microphone board and compute cradle. No page errors and no horizontal overflow at 390 px. The agent-browser daemon failed to start in this environment; the installed Playwright/Chromium renderer was used as fallback.
 - Removed the solid ventilation backing after visual inspection. Full tolerance, thermal, acoustic and cable engagement tests remain pending.
+
+## C.04 rotating head — 2026-09-07
+
+- Geometry rebuilt with all 580 native-scale supplier ReSpeaker solids retained.
+- Measured neutral envelope: 160 × 183.95 × 224 mm (X/Y/Z).
+- Analytic legacy-head/base separation: 15.4 mm for every yaw angle.
+- New rigid transmission versus fixed drivetrain: 67 candidate Boolean pairs at
+  −180°, −90°, 0°, +90°, +180°, with no positive-volume overlap above 0.01 mm³.
+  Scope excludes belt/tooth engagement, home sensor and all pre-existing internal
+  head contacts. Input stop spacing was corrected after this check found overlap.
+- Signed-angle and servo mapping checks, joint metadata, base invariance and
+  flex endpoints passed (`node scripts/check_motion.cjs`).
+- EN/PT/ES catalog generation, locale/link checks, runtime translations and JS
+  syntax passed. Motion script order is checked before viewer startup.
+- No browser/WebGL rendering verification completed. Offline VTK rendering was
+  unavailable because this runtime lacks EGL/OSMesa.
+- No physical torque, cable-life, bearing-fit, thermal or acoustic validation.
+  This revision is a visualization and packaging study, not a fabrication release.

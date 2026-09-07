@@ -1,5 +1,5 @@
 {
-  "revision": "C.03",
+  "revision": "C.04",
   "units": "mm",
   "release": "Visualization and packaging study; not manufacturing CAD",
   "source_checked": "2026-09-07",
@@ -64,20 +64,55 @@
       "fidelity": "Carrier/envelope placeholders retained from C.02",
       "source": "https://www.pololu.com/product/3415",
       "limitations": "Carrier dimensions and optical stack need selected-module verification; light module unselected."
+    },
+    {
+      "name": "SC09 positional microservo",
+      "source": "https://www.waveshare.com/sc09-servo.htm",
+      "fidelity": "Conservative 34 x 16 x 34 mm keep-out, illustrative shaft and clamp; not supplier CAD",
+      "position_range_deg": 300,
+      "used_range_deg": [
+        30,
+        270
+      ],
+      "limitations": "Direct supplier retrieval HTTP 403; exact mount/horn dimensions, continuous torque and bus mapping require supplier documentation and bench validation."
+    },
+    {
+      "name": "Yaw transmission",
+      "fidelity": "Proposed 72:48 GT2 pulleys, 220 x 6 mm belt; visible teeth are illustrative",
+      "head_range_deg": [
+        -180,
+        180
+      ],
+      "limitations": "Tension adjustment, tooth profile, purchased belt, fasteners and fit not released."
+    },
+    {
+      "name": "Head bearing support",
+      "fidelity": "Two 25 x 37 x 7 mm bearing reserves, hollow spindle with 16 mm cable bore, rotating tray and support bridge",
+      "limitations": "Bearing variant, fits, shoulders, retention, load and fatigue not validated."
+    },
+    {
+      "name": "Motion power and controller",
+      "fidelity": "PCB and connector reserves for half-duplex TTL controller and regulated 6 V supply",
+      "limitations": "No selected controller or PSU, schematic or executable motor firmware; watchdog, motor enable, supply transients and GPIO mapping remain to implement."
+    },
+    {
+      "name": "Joint flex harness",
+      "fidelity": "Illustrative neutral route and viewer twist",
+      "limitations": "No validated lengths, connector engagement, bend radii or torsion life. Bounded ±180° only."
     }
   ],
-  "assembly": "Speaker on top; full microphone PCB vertical on left; camera/display at front; compute cradle behind display.",
+  "assembly": "C.03 head and electronics on C.04 rotating tray; fixed keyboard/base; independent motor supply and 3:2 belt drive.",
   "validation": {
-    "parts": 845,
-    "triangles": 267320,
+    "parts": 998,
+    "triangles": 279856,
     "bounds_mm": [
-      128.7,
+      160.0,
       183.95,
-      184.0
+      224.0
     ],
     "top_joint": {
-      "revision": "C.03 — detailed interior; recessed top speaker grille, microphone array on left wall",
-      "skirt_bottom_z_mm": 180.3,
+      "revision": "C.04 — rotating head; C.03 top joint translated by 40 mm",
+      "skirt_bottom_z_mm": 220.3,
       "skirt_inner_opening_mm": [
         74,
         64
@@ -88,7 +123,7 @@
         1.4
       ],
       "grille_perforations": 357,
-      "grille_top_z_mm": 184.0,
+      "grille_top_z_mm": 224.0,
       "lid_watertight": true,
       "assembled_connected_solids": 1,
       "raw_boolean_components": 1,
@@ -97,6 +132,49 @@
       "lid_shell_overlap_mm3": 0.0,
       "skirt_microphone_reserve_overlap_mm3": 0.0,
       "fit": "Nominal contact; print tolerances and fasteners not defined."
+    },
+    "rotation": {
+      "revision": "C.04",
+      "head_lift_mm": 40,
+      "pivot_mm": [
+        0,
+        118,
+        0
+      ],
+      "head_range_deg": [
+        -180,
+        180
+      ],
+      "servo_operating_range_deg": [
+        30,
+        270
+      ],
+      "ratio_head_to_servo": 1.5,
+      "drive_teeth": 72,
+      "output_teeth": 48,
+      "belt_pitch_mm": 2,
+      "belt_length_mm": 220,
+      "pulley_center_distance_mm": 49.4082,
+      "nominal_belt_width_mm": 6,
+      "cable_bore_mm": 16,
+      "bearing_reserve_mm": [
+        25,
+        37,
+        7
+      ],
+      "base_mm": [
+        160,
+        182
+      ],
+      "head_height_increase_mm": 40,
+      "fidelity": "Packaging reserves, illustrative teeth and flex routing; no manufacturing release.",
+      "legacy_head_to_base_vertical_clearance_mm": 15.4,
+      "rotating_radius_mm": 82.69,
+      "swept_diameter_mm": 165.379,
+      "legacy_head_base_collision_free_all_yaw_angles": true,
+      "servo_end_margin_deg": 30,
+      "full_assembly_collision_checked": false,
+      "cable_flex_or_bearing_fit_validated": false
     },
     "full_interference_check": false,
     "thermal_or_acoustic_validation": false,

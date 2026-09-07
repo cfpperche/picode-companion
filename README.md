@@ -2,7 +2,7 @@
 
 [English](https://picode-companion-c02.vercel.app/en/) · [Português](https://picode-companion-c02.vercel.app/pt/) · [Español](https://picode-companion-c02.vercel.app/es/)
 
-An interactive product studio for the PiCode Companion C.03 desktop AI hardware concept. Explore the original 3D model, exploded assembly, electronics, dimensions and material studies.
+An interactive product studio for the PiCode Companion C.04 desktop AI hardware concept. Explore the original 3D model, exploded assembly, electronics, dimensions and material studies.
 
 **Live site:** https://picode-companion-c02.vercel.app/  
 **Repository:** https://github.com/cfpperche/picode-companion
@@ -23,7 +23,7 @@ Each language has pre-rendered HTML, translated metadata and accessible labels, 
 - `public/app.js`: explorer controls and translated UI updates.
 - `public/viewer.js`: WebGL renderer and translated annotations.
 - `public/styles.css`: responsive styling.
-- `public/assets/companion-c03.b64`: current geometry, gzip/base64 JSON. See `hardware/verificacao.json` for measured counts and bounds.
+- `public/assets/companion-c04.b64`: current geometry, gzip/base64 JSON. See `hardware/verificacao.json` for measured counts and bounds.
 - `public/{en,pt,es}/index.html` and `public/locales/*.js`: generated files. Commit them after editing the template or catalogs.
 
 ```bash
@@ -57,3 +57,17 @@ The files-based deployment and GitHub repository are separate operations. See [V
 ## C.03 interior revision
 
 The model now includes native-scale supplier ReSpeaker geometry, proposed mounting cradles, flat CSI routing and a detailed generic speaker. Use **Isolate component** to inspect a subsystem. See [hardware documentation](hardware/README.md) and [component evidence](hardware/components.json). Other module details remain simplified and the assembly is not released for manufacturing.
+
+## C.04 rotating head
+
+The head now has a −180° to +180° motion control. The keyboard stays fixed.
+A proposed SC09 microservo drives a 72:48 belt transmission, with two bearing
+reserves, a hollow spindle and a rotating electronics tray. The base is 32 mm
+wider and the head sits 40 mm higher: 160 × 224 × 184 mm neutral envelope.
+
+[Mechanical design, torque, wiring and assembly](hardware/ROTATING_HEAD.md).
+The actuator and harness are packaging studies pending bench validation.
+
+```sh
+node scripts/check_motion.cjs
+```

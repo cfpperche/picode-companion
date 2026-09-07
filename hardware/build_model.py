@@ -225,6 +225,8 @@ for p in PARTS:
 
 from interior import revise
 revise(globals())
+from rotation import revise as add_rotation, verify as verify_rotation
+add_rotation(globals())
 
 def export():
     view=[];scene=tm.Scene()
@@ -234,6 +236,7 @@ def export():
         normals=np.clip(np.round(m.vertex_normals*127),-127,127).astype('i1')
         vertices=np.round(m.vertices*100).astype('<i2');faces=m.faces.astype('<u2')
         assert len(m.vertices)<65536
+        assert np.max(np.abs(m.vertices*100))<32767, 'Fixed-point overflow'
         q={k:v for k,v in p.items() if k!='mesh'}
         for k,a in [('p',vertices),('v',normals),('i',faces)]:q[k]=base64.b64encode(a.tobytes()).decode()
         view.append(q)
@@ -243,7 +246,7 @@ def export():
         scene.add_geometry(m,node_name=f"{len(view):03d}_{p['n']}")
     data=json.dumps(view,separators=(',',':')).encode();(ROOT/'meshes.json').write_bytes(data)
     (ROOT/'meshes.b64').write_text(base64.b64encode(gzip.compress(data,compresslevel=9,mtime=0)).decode())
-    (ROOT/'PiCode_Companion_C03.glb').write_bytes(scene.export(file_type='glb'))
+    (ROOT/'PiCode_Companion_C04.glb').write_bytes(scene.export(file_type='glb'))
     bounds=np.array([p['mesh'].bounds for p in PARTS]); ext=bounds[:,1].max(axis=0)-bounds[:,0].min(axis=0)
     report={'parts':len(PARTS),'triangles':sum(len(p['mesh'].faces) for p in PARTS),'bounds_mm':np.round(ext,2).tolist(),'compressed_bytes':(ROOT/'meshes.b64').stat().st_size}
     report['groups_mm']={g: np.round([np.min([p['mesh'].bounds[0] for p in PARTS if p['g']==g],axis=0),np.max([p['mesh'].bounds[1] for p in PARTS if p['g']==g],axis=0)],3).tolist() for g in sorted(set(p['g'] for p in PARTS))}
@@ -253,19 +256,20 @@ def export():
     joined=tm.boolean.union([shell,lid],engine='manifold')
     intersection=tm.boolean.intersection([shell,lid],engine='manifold')
     shared_volume=intersection.volume if len(intersection.faces) else 0.0
-    mic_reserve=cyl(50,8.3,(-52.45,123,116),'x',64)
-    mic_contact=tm.boolean.intersection([top_skirt,mic_reserve],engine='manifold')
+    mic_reserve=cyl(50,8.3,(-52.45,123,156),'x',64)
+    raised_skirt=top_skirt.copy(); raised_skirt.apply_translation([0,0,40])
+    mic_contact=tm.boolean.intersection([raised_skirt,mic_reserve],engine='manifold')
     mic_interference=mic_contact.volume if len(mic_contact.faces) else 0.0
     # Float32 CSG can produce zero-volume slivers at coincident surfaces.
     # Count solid connected components above 0.0001 mm³, retaining raw counts.
     solid_bodies=[m for m in joined.split(only_watertight=False) if abs(m.volume)>0.0001]
     report['top_joint']={
-      'revision':'C.03 — detailed interior; recessed top speaker grille, microphone array on left wall',
-      'skirt_bottom_z_mm':180.3,
+      'revision':'C.04 — rotating head; C.03 top joint translated by 40 mm',
+      'skirt_bottom_z_mm':220.3,
       'skirt_inner_opening_mm':[74,64],
       'grille_size_mm':[82,72,1.4],
       'grille_perforations':357,
-      'grille_top_z_mm':184.0,
+      'grille_top_z_mm':224.0,
       'lid_watertight':bool(lid.is_watertight),
       'assembled_connected_solids':len(solid_bodies),
       'raw_boolean_components':int(joined.body_count),
@@ -278,6 +282,7 @@ def export():
     assert abs(shared_volume)<.01 and abs(mic_interference)<.01
     report['scope']='Computed group bounds and top joint only. Supplier STEP tessellation for ReSpeaker; remaining electronics and proposed mounts are simplified. No complete interference, tolerance, cabling, acoustic or thermal validation.'
 
+    report['rotation']={**rotation_spec,**verify_rotation(PARTS)}
     (ROOT/'verificacao.json').write_text(json.dumps(report,indent=2))
     print(json.dumps(report))
 

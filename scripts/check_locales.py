@@ -41,7 +41,7 @@ def check():
         assert set(alternates) == {'en', 'pt-BR', 'es', 'x-default'}
         assert len([a for t, a in page.elements if t == 'link' and a.get('rel') == 'canonical']) == 1
         scripts = [a['src'] for t, a in page.elements if t == 'script']
-        assert scripts.index(f'/locales/{lang}.js') < scripts.index('/viewer.js') < scripts.index('/app.js')
+        assert scripts.index(f'/locales/{lang}.js') < scripts.index('/motion.js') < scripts.index('/viewer.js') < scripts.index('/app.js')
         for tag, attrs in page.elements:
             ref = attrs.get('src') if tag == 'script' else attrs.get('href') if tag in ('a', 'link') else None
             if not ref:

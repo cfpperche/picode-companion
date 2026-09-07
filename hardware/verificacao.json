@@ -1,83 +1,83 @@
 {
-  "parts": 845,
-  "triangles": 267320,
+  "parts": 998,
+  "triangles": 279856,
   "bounds_mm": [
-    128.7,
+    160.0,
     183.95,
-    184.0
+    224.0
   ],
-  "compressed_bytes": 2333344,
+  "compressed_bytes": 2458020,
   "groups_mm": {
     "acoustic": [
       [
         -39.0,
         88.0,
-        150.0
+        190.0
       ],
       [
         39.0,
         156.0,
-        180.0
+        220.0
       ]
     ],
     "base": [
       [
-        -64.35,
+        -80.0,
         -0.45,
         0.0
       ],
       [
-        64.35,
+        80.0,
         182.8,
-        48.0
+        40.5
       ]
     ],
     "bezel": [
       [
         -57.5,
         56.6,
-        51.0
+        91.0
       ],
       [
         57.5,
         62.0,
-        181.0
+        221.0
       ]
     ],
     "cables": [
       [
         -52.094,
         73.48,
-        61.264
+        101.264
       ],
       [
         8.0,
         166.59,
-        173.486
+        213.486
       ]
     ],
     "camera": [
       [
         -12.5,
         56.3,
-        153.0
+        193.0
       ],
       [
         12.5,
         74.0,
-        177.0
+        217.0
       ]
     ],
     "compute": [
       [
         -44.5,
         105.59,
-        51.7
+        91.7
       ],
       [
         10.55,
         148.5,
-        103.0
+        143.0
       ]
     ],
     "deck": [
@@ -96,12 +96,12 @@
       [
         -42.0,
         62.75,
-        63.0
+        103.0
       ],
       [
         42.0,
         82.0,
-        147.0
+        187.0
       ]
     ],
     "keys": [
@@ -120,24 +120,24 @@
       [
         -60.375,
         72.77,
-        66.001
+        106.001
       ],
       [
         -47.765,
         174.58,
-        168.975
+        208.975
       ]
     ],
     "mounts": [
       [
         -54.7,
         62.0,
-        41.0
+        81.0
       ],
       [
         46.5,
         152.5,
-        177.5
+        217.5
       ]
     ],
     "mute": [
@@ -168,72 +168,96 @@
       [
         -41.0,
         86.0,
-        180.3
+        220.3
       ],
       [
         41.0,
         158.0,
-        184.0
+        224.0
+      ]
+    ],
+    "rotation": [
+      [
+        -73.527,
+        60.5,
+        10.0
+      ],
+      [
+        59.5,
+        183.5,
+        98.343
+      ]
+    ],
+    "rotation_cover": [
+      [
+        -79.0,
+        80.0,
+        41.5
+      ],
+      [
+        75.0,
+        156.0,
+        72.5
       ]
     ],
     "sensors": [
       [
         -50.0,
         57.0,
-        151.0
+        191.0
       ],
       [
         47.5,
         66.0,
-        171.0
+        211.0
       ]
     ],
     "shell": [
       [
         -60.0,
         60.927,
-        48.0
+        88.0
       ],
       [
         60.0,
         179.5,
-        184.0
+        224.0
       ]
     ],
     "shutter": [
       [
         11.5,
         54.975,
-        158.0
+        198.0
       ],
       [
         24.5,
         56.4,
-        172.0
+        212.0
       ]
     ],
     "shutterrail": [
       [
         -8.0,
         56.45,
-        156.5
+        196.5
       ],
       [
         24.0,
         57.75,
-        173.5
+        213.5
       ]
     ],
     "speaker": [
       [
         -37.0,
         90.0,
-        159.5
+        199.5
       ],
       [
         37.0,
         154.0,
-        178.4
+        218.4
       ]
     ]
   },
@@ -286,8 +310,8 @@
     "ReSpeaker supplier CAD \u00b7 solid 566"
   ],
   "top_joint": {
-    "revision": "C.03 \u2014 detailed interior; recessed top speaker grille, microphone array on left wall",
-    "skirt_bottom_z_mm": 180.3,
+    "revision": "C.04 \u2014 rotating head; C.03 top joint translated by 40 mm",
+    "skirt_bottom_z_mm": 220.3,
     "skirt_inner_opening_mm": [
       74,
       64
@@ -298,7 +322,7 @@
       1.4
     ],
     "grille_perforations": 357,
-    "grille_top_z_mm": 184.0,
+    "grille_top_z_mm": 224.0,
     "lid_watertight": true,
     "assembled_connected_solids": 1,
     "raw_boolean_components": 1,
@@ -308,5 +332,48 @@
     "skirt_microphone_reserve_overlap_mm3": 0.0,
     "fit": "Nominal contact; print tolerances and fasteners not defined."
   },
-  "scope": "Computed group bounds and top joint only. Supplier STEP tessellation for ReSpeaker; remaining electronics and proposed mounts are simplified. No complete interference, tolerance, cabling, acoustic or thermal validation."
+  "scope": "Computed group bounds and top joint only. Supplier STEP tessellation for ReSpeaker; remaining electronics and proposed mounts are simplified. No complete interference, tolerance, cabling, acoustic or thermal validation.",
+  "rotation": {
+    "revision": "C.04",
+    "head_lift_mm": 40,
+    "pivot_mm": [
+      0,
+      118,
+      0
+    ],
+    "head_range_deg": [
+      -180,
+      180
+    ],
+    "servo_operating_range_deg": [
+      30,
+      270
+    ],
+    "ratio_head_to_servo": 1.5,
+    "drive_teeth": 72,
+    "output_teeth": 48,
+    "belt_pitch_mm": 2,
+    "belt_length_mm": 220,
+    "pulley_center_distance_mm": 49.4082,
+    "nominal_belt_width_mm": 6,
+    "cable_bore_mm": 16,
+    "bearing_reserve_mm": [
+      25,
+      37,
+      7
+    ],
+    "base_mm": [
+      160,
+      182
+    ],
+    "head_height_increase_mm": 40,
+    "fidelity": "Packaging reserves, illustrative teeth and flex routing; no manufacturing release.",
+    "legacy_head_to_base_vertical_clearance_mm": 15.4,
+    "rotating_radius_mm": 82.69,
+    "swept_diameter_mm": 165.379,
+    "legacy_head_base_collision_free_all_yaw_angles": true,
+    "servo_end_margin_deg": 30,
+    "full_assembly_collision_checked": false,
+    "cable_flex_or_bearing_fit_validated": false
+  }
 }
