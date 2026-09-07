@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f5f7">
+  <meta name="description" content="Explore o PiCode Companion em 3D. Um agente de IA de mesa em desenvolvimento, com voz, visão e uma interface física para seus agentes PiCode.">
+  <meta property="og:title" content="PiCode Companion — Seus agentes. Aqui, com você.">
+  <meta property="og:description" content="Conheça o conceito, explore o hardware e veja cada parte do protótipo em 3D.">
+  <meta property="og:type" content="website">
+  <title>PiCode Companion — Seus agentes. Aqui, com você.</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/locales/pt.js" defer></script>
+  <script src="/viewer.js" defer></script>
+  <script src="/app.js" defer></script>
+<link rel="canonical" href="https://picode-companion-c02.vercel.app/pt/"><meta property="og:url" content="https://picode-companion-c02.vercel.app/pt/"><meta property="og:locale" content="pt_BR"><link rel="alternate" hreflang="en" href="https://picode-companion-c02.vercel.app/en/"><meta property="og:locale:alternate" content="en_US"><link rel="alternate" hreflang="pt-BR" href="https://picode-companion-c02.vercel.app/pt/"><link rel="alternate" hreflang="es" href="https://picode-companion-c02.vercel.app/es/"><meta property="og:locale:alternate" content="es_ES"><link rel="alternate" hreflang="x-default" href="https://picode-companion-c02.vercel.app/en/"></head>
+<body>
+<a class="skip-link" href="#explorar">Pular para o explorador 3D</a>
+<header class="header">
+  <a href="/pt/" class="brand" aria-label="PiCode Companion, início"><span class="brand-symbol" aria-hidden="true">pi<span>_</span></span><span class="brand-type">PiCode<small>COMPANION</small></span></a>
+  <div class="breadcrumb"><span>Laboratório</span><span aria-hidden="true">/</span><strong>Agente de mesa</strong><span class="revision">C.02</span></div>
+  <a class="github-link" href="https://github.com/cfpperche/picode" target="_blank" rel="noopener noreferrer"><svg viewbox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 19c-4.3 1.3-4.3-2.2-6-2.7M15 22v-3.5c0-1 .1-1.7-.5-2.4 3.3-.4 6.8-1.6 6.8-7.4a5.8 5.8 0 0 0-1.5-4c.2-.7.7-2-.2-3.7 0 0-1.2-.4-4 1.5a13 13 0 0 0-7.2 0C5.6.6 4.4 1 4.4 1c-.9 1.7-.4 3-.2 3.7a5.8 5.8 0 0 0-1.5 4c0 5.8 3.5 7 6.8 7.4-.6.7-.6 1.4-.5 2.4V22" transform="translate(1 1) scale(.9)"/></svg><span>Projeto PiCode</span><span aria-hidden="true">↗</span></a>
+<nav class="language-switcher" aria-label="Idioma"><a href="/en/" data-language="en" lang="en" hreflang="en" aria-label="English">EN</a><a href="/pt/" data-language="pt" lang="pt-BR" hreflang="pt-BR" aria-label="Português" aria-current="page">PT</a><a href="/es/" data-language="es" lang="es" hreflang="es" aria-label="Español">ES</a></nav></header>
+<main id="picode-cyber-c">
+  <div class="workspace" id="explorar">
+    <section class="studio" aria-label="Explorador do protótipo">
+      <div class="scene-heading"><div><p class="eyebrow">PICODE COMPANION / C.02</p><h1>Seus agentes.<br><span>Aqui, com você.</span></h1></div><span class="concept-tag">Protótipo em desenvolvimento</span></div>
+      <div class="mode-bar" role="group" aria-label="Modo de exploração">
+        <button type="button" class="mode-button active" data-mode="exterior" aria-pressed="true"><span class="mode-number">01</span> Design</button>
+        <button type="button" class="mode-button" data-mode="explode" aria-pressed="false"><span class="mode-number">02</span> Explodido</button>
+        <button type="button" class="mode-button" data-mode="inside" aria-pressed="false"><span class="mode-number">03</span> Eletrônica</button>
+        <button type="button" class="mode-button" data-mode="specs" aria-pressed="false"><span class="mode-number">04</span> Ficha técnica</button>
+      </div>
+      <div class="scene-body">
+        <span class="scene-watermark" aria-hidden="true">C.02</span>
+        <div class="pcc-stage" data-nojs="Ative o JavaScript para explorar o modelo 3D.">
+          <canvas id="pcc-canvas" tabindex="0" role="img" aria-label="PiCode Companion em 3D. Carcaça grafite, tela quadrada, seis teclas, alavanca metálica e alto-falante no topo. Arraste ou use as setas do teclado para girar; mais e menos ajustam o zoom."></canvas>
+          <svg id="pcc-overlay" aria-hidden="true"></svg>
+          <div id="pcc-loading" role="status"><span class="loading-mark">pi_</span><span>Preparando seu Companion…</span></div>
+        </div>
+        <div class="scene-caption"><span class="caption-dot" aria-hidden="true"></span><span id="scene-caption">CYBERPUNK · GRAFITE + CIANO</span></div>
+        <div class="zoom-controls" role="group" aria-label="Zoom"><button type="button" id="zoom-in" aria-label="Aproximar">+</button><button type="button" id="zoom-out" aria-label="Afastar">−</button><button type="button" id="reset-view" aria-label="Restaurar vista" title="Restaurar vista">↺</button></div>
+        <div class="explode-control" id="explode-control" hidden><label for="pcc-explode">Separação das peças <output id="explode-value">100%</output></label><input type="range" id="pcc-explode" min="0" max="100" value="100"></div>
+      </div>
+      <div class="scene-bottom">
+        <div class="view-control"><label for="pcc-view">Vista</label><select id="pcc-view"><option value="iso">Perspectiva</option><option value="front">Frontal</option><option value="left">Microfones · esquerda</option><option value="right">Lateral direita</option><option value="back">Traseira</option><option value="top">Alto-falante · topo</option></select></div>
+        <span class="gesture-help">Arraste para girar · scroll para aproximar</span>
+        <label class="dimensions-toggle"><input type="checkbox" id="pcc-dims"><span class="switch" aria-hidden="true"></span> Cotas</label>
+      </div>
+      <select id="pcc-mode" hidden aria-hidden="true"><option value="exterior">Exterior</option><option value="inside">Interior</option><option value="explode">Explodido</option></select>
+      <select id="pcc-component" hidden aria-hidden="true"><option value="all">Geral</option><option value="camera">Câmera</option><option value="mic">Microfones</option><option value="speaker">Alto-falante</option><option value="sensors">Sensores</option><option value="compute">Computação</option><option value="display">Display</option><option value="ports">Conexões</option></select>
+    </section>
+    <aside class="inspector" aria-label="Detalhes do Companion">
+      <div class="inspector-heading"><span class="eyebrow">UM CORPO PARA SUA IA</span><h2>Companion<span class="asterisk" aria-hidden="true">✳</span></h2><p>Voz, visão e presença. Uma interface física para os agentes que trabalham com você.</p></div>
+      <div class="panel" data-panel="exterior">
+        <section class="inspector-section finish-section"><div class="section-label"><h3>Acabamento</h3><span>ESTUDO VISUAL</span></div><div class="swatches" role="group" aria-label="Acabamento do protótipo"><button type="button" class="swatch active" data-finish="graphite" aria-label="Grafite cyberpunk" aria-pressed="true"><span class="swatch-color graphite"></span></button><button type="button" class="swatch" data-finish="pearl" aria-label="Pérola cyberpunk" aria-pressed="false"><span class="swatch-color pearl"></span></button><button type="button" class="swatch" data-finish="pink" aria-label="Rosa retrô" aria-pressed="false"><span class="swatch-color pink"></span></button></div><strong id="finish-name">Grafite cyberpunk</strong><p class="small" id="finish-description">Corpo acetinado · detalhes ciano e magenta</p></section>
+        <section class="inspector-section"><div class="section-label"><h3>Explore os detalhes</h3><span>01—04</span></div><div class="detail-list">
+          <button type="button" data-component="speaker"><span class="detail-number">01</span><span><strong>Som que vem do topo</strong><small>Grade metálica embutida</small></span><span aria-hidden="true">↗</span></button>
+          <button type="button" data-component="mic"><span class="detail-number">02</span><span><strong>Quatro microfones</strong><small>Entradas na lateral esquerda</small></span><span aria-hidden="true">↗</span></button>
+          <button type="button" data-component="camera"><span class="detail-number">03</span><span><strong>Um olhar para sua mesa</strong><small>Câmera e obturador físico</small></span><span aria-hidden="true">↗</span></button>
+          <button type="button" data-component="display"><span class="detail-number">04</span><span><strong>Expressões e informação</strong><small>Tela IPS · 720 × 720</small></span><span aria-hidden="true">↗</span></button>
+        </div></section>
+        <section class="inspector-section dimensions-block"><div class="section-label"><h3>Pequeno na mesa.</h3><span>ENVELOPE</span></div><div class="dimension-values"><div><strong>129<small>mm</small></strong><span>Largura</span></div><div><strong>184<small>mm</small></strong><span>Altura</span></div><div><strong>184<small>mm</small></strong><span>Profundidade</span></div></div><p class="small">Dimensões nominais do modelo C.02.</p></section>
+      </div>
+      <div class="panel" data-panel="explode" hidden>
+        <section class="inspector-section"><div class="section-label"><h3>Por dentro da forma</h3><span>146 PARTES</span></div><p>Separe o conjunto para explorar o gabinete, a moldura, os controles e os volumes reservados para os módulos.</p><div class="assembly-list"><div><span>01</span><strong>Grade e câmara acústica</strong><small>Alto-falante no topo</small></div><div><span>02</span><strong>Carcaça e moldura</strong><small>Corpo arredondado com topo contínuo</small></div><div><span>03</span><strong>Eletrônica</strong><small>Placa, câmera, display e sensores</small></div><div><span>04</span><strong>Base e controles</strong><small>Seis teclas, alavanca e botão</small></div></div><p class="engineering-note">Estudo de montagem: suportes, fixações, passagens de cabos e encaixes de fabricação ainda precisam de desenvolvimento.</p></section>
+      </div>
+      <div class="panel" data-panel="inside" hidden>
+        <section class="inspector-section"><div class="section-label"><h3>Hardware de referência</h3><span>EM AVALIAÇÃO</span></div><p>Componentes representados em escala, com espaço para conexões e refrigeração.</p><div class="hardware-list">
+          <button type="button" data-component="compute"><span class="chip-icon" aria-hidden="true">CPU</span><span><strong>Compute Module 5</strong><small>8 GB · portadora CM5-NANO-B</small></span><span aria-hidden="true">↗</span></button>
+          <button type="button" data-component="mic"><span class="chip-icon" aria-hidden="true">MIC</span><span><strong>ReSpeaker XVF3800</strong><small>4 microfones · placa Ø100 mm</small></span><span aria-hidden="true">↗</span></button>
+          <button type="button" data-component="camera"><span class="chip-icon" aria-hidden="true">CAM</span><span><strong>Camera Module 3</strong><small>Autofocus · 25 × 24 mm</small></span><span aria-hidden="true">↗</span></button>
+          <button type="button" data-component="display"><span class="chip-icon" aria-hidden="true">LCD</span><span><strong>IPS quadrado de 4″</strong><small>Waveshare · 720 × 720</small></span><span aria-hidden="true">↗</span></button>
+          <button type="button" data-component="sensors"><span class="chip-icon" aria-hidden="true">ToF</span><span><strong>Distância e luz</strong><small>VL53L1X + reserva para luminosidade</small></span><span aria-hidden="true">↗</span></button>
+          <button type="button" data-component="speaker"><span class="chip-icon" aria-hidden="true">SOM</span><span><strong>Alto-falante de 40 mm</strong><small>Modelo comercial a selecionar</small></span><span aria-hidden="true">↗</span></button>
+        </div><p class="engineering-note">Seleção preliminar. Compatibilidade elétrica, desempenho térmico e acústica dependem de testes de bancada.</p></section>
+      </div>
+      <div class="panel" data-panel="specs" hidden>
+        <section class="inspector-section"><div class="section-label"><h3>Ficha técnica</h3><span>C.02</span></div><table class="spec-table"><caption class="sr-only">Especificações preliminares do modelo PiCode Companion</caption><tbody><tr><th scope="row">Dimensões L × A × P</th><td>129 × 184 × 184 mm</td></tr><tr><th scope="row">Display</th><td>IPS 4″ · 720 × 720</td></tr><tr><th scope="row">Computação proposta</th><td>CM5 · 8 GB</td></tr><tr><th scope="row">Visão</th><td>Camera Module 3</td></tr><tr><th scope="row">Áudio</th><td>4 microfones laterais<br>Alto-falante no topo</td></tr><tr><th scope="row">Sensores previstos</th><td>Distância ToF e luz</td></tr><tr><th scope="row">Controles</th><td>6 teclas, alavanca e botão</td></tr><tr><th scope="row">Captura</th><td>Obturador e mute propostos</td></tr><tr><th scope="row">Alimentação prevista</th><td>USB-C · 5 V<br>Orçamento a validar</td></tr><tr><th scope="row">Fabricação prevista</th><td>Impressão 3D e montagem</td></tr></tbody></table><p class="engineering-note">A escala pertence ao modelo geométrico. Esta revisão ainda não está liberada para fabricação.</p></section>
+      </div>
+      <div class="selection-note" id="selection-note" hidden><span class="eyebrow">NO MODELO</span><p id="pcc-detail" aria-live="polite">Selecione um componente para saber mais.</p><button type="button" id="pcc-shutter" aria-pressed="false" hidden>Fechar obturador</button><button type="button" id="clear-selection" class="text-button">Limpar seleção</button></div>
+      <div class="inspector-end"><a href="#ideia">Conheça a ideia <span aria-hidden="true">↓</span></a></div>
+    </aside>
+  </div>
+  <div class="model-foot"><span>MODELO EM MILÍMETROS</span><span>DESIGN C.02 · SET 2026</span><span>CONCEITO / EM DESENVOLVIMENTO</span></div>
+  <section id="ideia" class="story-section">
+    <div class="story-title"><p class="eyebrow">01 / A IDEIA</p><h2>Da janela do navegador<br>para um lugar na sua mesa.</h2></div>
+    <div class="story-copy"><p>O PiCode reúne seus agentes, projetos e decisões em um ambiente de desenvolvimento. O Companion nasce para dar uma presença física a esse trabalho.</p><p>A proposta é simples: conversar, mostrar um objeto e perceber quando um agente precisa de você. Sem perder o vínculo com o projeto e a sessão certos.</p><a class="inline-link" href="https://github.com/cfpperche/picode" target="_blank" rel="noopener noreferrer">Conheça o software PiCode <span aria-hidden="true">↗</span></a></div>
+  </section>
+  <section class="capabilities-section" aria-labelledby="capabilities-title">
+    <div class="section-intro"><p class="eyebrow">02 / INTERAÇÕES PLANEJADAS</p><h2 id="capabilities-title">Fale. Mostre. Participe.</h2><p>As experiências que orientam o desenvolvimento do hardware.</p></div>
+    <div class="capabilities-grid">
+      <article><span class="capability-index">01 / VOZ</span><h3>Uma conversa<br>ao alcance da voz.</h3><p>Microfones, alto-falante e processamento de áudio para conversar com o agente e responder às suas perguntas.</p><button type="button" class="inline-link" data-explore="mic">Explorar o áudio <span aria-hidden="true">↗</span></button></article>
+      <article><span class="capability-index">02 / VISÃO</span><h3>Mostre o que<br>está construindo.</h3><p>A câmera com autofocus é a candidata para observar objetos, placas e documentos na sua mesa.</p><button type="button" class="inline-link" data-explore="camera">Explorar a câmera <span aria-hidden="true">↗</span></button></article>
+      <article><span class="capability-index">03 / PRESENÇA</span><h3>Seus agentes,<br>mais perto de você.</h3><p>Expressões, avisos e controles físicos para acompanhar o trabalho e intervir quando houver uma decisão.</p><button type="button" class="inline-link" data-explore="display">Explorar a interface <span aria-hidden="true">↗</span></button></article>
+    </div>
+  </section>
+  <section class="development-section" aria-labelledby="development-title"><div><p class="eyebrow">03 / PRÓXIMOS PASSOS</p><h2 id="development-title">Construído por etapas.<br>Com espaço para evoluir.</h2><p>O formato e a disposição do hardware já podem ser explorados. A próxima etapa é transformar o conceito em um protótipo funcional.</p></div><ol class="roadmap"><li><span class="roadmap-label">AGORA</span><strong>Design e estudo de integração</strong><p>Carcaça em 3D e volumes dos componentes.</p></li><li><span class="roadmap-label">A SEGUIR</span><strong>Eletrônica e bancada</strong><p>Alimentação, áudio, câmera, refrigeração e fixações.</p></li><li><span class="roadmap-label">DEPOIS</span><strong>Integração com PiCode</strong><p>Voz, eventos dos agentes e testes de interação.</p></li></ol></section>
+</main>
+<footer class="footer"><a class="footer-brand" href="#">PiCode <span>Companion</span></a><p>Uma presença física para seus agentes.</p><a href="https://github.com/cfpperche/picode" target="_blank" rel="noopener noreferrer">Acompanhe o projeto ↗</a></footer>
+<noscript><div class="no-script">Ative o JavaScript para explorar o modelo 3D. A descrição do conceito e a ficha de hardware continuam disponíveis nesta página.</div></noscript>
+</body>
+</html>

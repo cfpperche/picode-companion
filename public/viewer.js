@@ -1,32 +1,33 @@
 
 (async()=>{
 const root=document.getElementById('picode-cyber-c');
+const t=message=>window.PiCodeI18n?.t(message) ?? message;
 const $=id=>root.querySelector('#pcc-'+id),canvas=$('canvas'),overlay=$('overlay'),status=$('detail'),loading=$('loading');
 const modeSelect=$('mode'),viewSelect=$('view'),component=$('component'),dimensionCheck=$('dims'),shutterButton=$('shutter');
 let mode='exterior',yaw=.59,pitch=.33,zoom=.9,explode=0,closed=false,drag=null,scheduled=false,transition=0,finish='graphite';
 const views={iso:[.59,.33],front:[0,0],right:[Math.PI/2,.05],left:[-Math.PI/2,.12],back:[Math.PI+.37,.23],top:[0,Math.PI/2]};
 const groups={
- all:{label:'Visão geral',info:'Arraste para girar · roda do mouse para aproximar · escala geométrica em mm.'},
- camera:{label:'Câmera',anchor:[0,55,165],e:[-26,-20,43],info:'Camera Module 3 · 25 × 24 × 11,5 mm · autofocus + obturador físico proposto.',url:'https://www.raspberrypi.com/products/camera-module-3/'},
- mic:{label:'4 microfones',anchor:[-60.2,90,149],e:[-45,0,0],info:'Quatro entradas na lateral esquerda · ReSpeaker Ø100 mm instalada inteira na vertical.',url:'https://files.seeedstudio.com/wiki/respeaker_xvf3800_usb/respeaker_xvf3800_2d_mechanical_drawing.pdf'},
- speaker:{label:'Alto-falante',anchor:[0,122,184],e:[0,0,64],info:'Alto-falante Ø40 mm no topo · grade metálica embutida 82 × 72 mm · câmara reservada 78 × 68 × 30 mm.'},
- sensors:{label:'Sensores',anchor:[41,57,161],e:[32,-10,36],info:'ToF VL53L1X em portadora 13 × 18 mm + reserva de 20 × 20 mm para sensor de luz.',url:'https://www.pololu.com/product/3415'},
- compute:{label:'CM5',anchor:[-17,128,99],e:[-45,24,0],info:'CM5 8 GB · 55 × 40 mm; portadora 55 × 41 mm; dissipador e fan 40 mm com volumes reservados.',url:'https://www.waveshare.com/cm5-nano-b.htm'},
- display:{label:'Display',anchor:[0,63,105],e:[0,-55,2],info:'Waveshare HDMI LCD (C) 4″ · 720 × 720 · reserva de montagem 94 × 94 × 22 mm.',url:'https://www.waveshare.com/4inch-hdmi-lcd-c.htm'},
- ports:{label:'I/O + mute',anchor:[25,183,25],e:[0,0,0],info:'USB-C 5 V, USB de serviço e chave de mute · extensões internas e circuito de mute a desenvolver.'}
+ all:{label:"General view",info:"Drag to rotate · mouse wheel to zoom · geometric scale in mm."},
+ camera:{label:"Camera",anchor:[0,55,165],e:[-26,-20,43],info:"Camera Module 3 · 25 × 24 × 11.5 mm · autofocus + proposed physical shutter.",url:'https://www.raspberrypi.com/products/camera-module-3/'},
+ mic:{label:"4 microphones",anchor:[-60.2,90,149],e:[-45,0,0],info:"Four ports on the left side · full Ø100 mm ReSpeaker board mounted vertically.",url:'https://files.seeedstudio.com/wiki/respeaker_xvf3800_usb/respeaker_xvf3800_2d_mechanical_drawing.pdf'},
+ speaker:{label:"Speaker",anchor:[0,122,184],e:[0,0,64],info:"Top Ø40 mm speaker · recessed 82 × 72 mm metal grille · reserved 78 × 68 × 30 mm chamber."},
+ sensors:{label:"Sensors",anchor:[41,57,161],e:[32,-10,36],info:"VL53L1X ToF on a 13 × 18 mm carrier + 20 × 20 mm space for a light sensor.",url:'https://www.pololu.com/product/3415'},
+ compute:{label:'CM5',anchor:[-17,128,99],e:[-45,24,0],info:"CM5 8 GB · 55 × 40 mm; 55 × 41 mm carrier; space reserved for a heatsink and 40 mm fan.",url:'https://www.waveshare.com/cm5-nano-b.htm'},
+ display:{label:"Display",anchor:[0,63,105],e:[0,-55,2],info:"Waveshare HDMI LCD (C) 4″ · 720 × 720 · reserved mounting space 94 × 94 × 22 mm.",url:'https://www.waveshare.com/4inch-hdmi-lcd-c.htm'},
+ ports:{label:"I/O + mute",anchor:[25,183,25],e:[0,0,0],info:"5 V USB-C, service USB and mute switch · internal extensions and mute circuitry still to be developed."}
 };
 function setDetail(){
- const item=groups[component.value];status.replaceChildren(document.createTextNode(item.info));
- if(item.url){const a=document.createElement('a');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=' Fabricante';status.appendChild(a);}
+ const item=groups[component.value];status.replaceChildren(document.createTextNode(t(item.info)));
+ if(item.url){const a=document.createElement('a');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=' '+t('Manufacturer');status.appendChild(a);}
 }
 try{
  const response=await fetch('/assets/companion-c02.b64');
- if(!response.ok)throw Error('Não foi possível carregar o arquivo do modelo.');
+ if(!response.ok)throw Error("The model file could not be loaded.");
  const source=atob((await response.text()).trim()),compressed=Uint8Array.from(source,c=>c.charCodeAt(0));
  const stream=new Blob([compressed]).stream().pipeThrough(new DecompressionStream('gzip'));
  const raw=JSON.parse(await new Response(stream).text());
  const gl=canvas.getContext('webgl',{alpha:true,antialias:true,premultipliedAlpha:false});
- if(!gl)throw Error('WebGL indisponível');
+ if(!gl)throw Error("WebGL is unavailable");
  function program(vs,fs){const p=gl.createProgram();for(const [t,s] of [[gl.VERTEX_SHADER,vs],[gl.FRAGMENT_SHADER,fs]]){const sh=gl.createShader(t);gl.shaderSource(sh,s);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(sh));gl.attachShader(p,sh);}gl.linkProgram(p);if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(p));return p;}
  const prog=program(`attribute vec3 aPosition;attribute vec3 aNormal;uniform mat3 uRotation;uniform vec3 uCenter;uniform vec2 uScale;uniform float uDepth;uniform vec3 uOffset;varying vec3 vNormal;
  void main(){vec3 q=uRotation*(aPosition/100.0+uOffset)-uCenter;gl_Position=vec4(q.x*uScale.x,-q.y*uScale.y,q.z/uDepth,1.0);vNormal=aNormal;}`,
@@ -55,7 +56,7 @@ try{
    const dims=[{a:[-64.5,-12,0],b:[64.5,-12,0],s:'129 mm',o:[0,16]},{a:[78,0,0],b:[78,0,184],s:'184 mm',o:[24,0]},{a:[-77,0,0],b:[-77,184,0],s:'184 mm',o:[-16,0]}];
    for(const d of dims){const a=projectPoint(d.a),b=projectPoint(d.b);if(Math.hypot(a[0]-b[0],a[1]-b[1])<40)continue;svg('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1]});for(const p of [a,b])svg('line',{x1:p[0]-3,y1:p[1]-3,x2:p[0]+3,y2:p[1]+3});const x=Math.max(31,Math.min(W-31,(a[0]+b[0])/2+d.o[0])),y=Math.max(16,Math.min(H-9,(a[1]+b[1])/2+d.o[1]));svg('rect',{x:x-27,y:y-12,width:54,height:17,rx:3});svg('text',{x,y,'text-anchor':'middle'},d.s);}
   }
-  const item=groups[component.value];if(item.anchor){const a=projectPoint(item.anchor.map((v,i)=>v+item.e[i]*explode)),x=Math.max(65,Math.min(W-65,a[0]+(a[0]>W/2?58:-58))),y=Math.max(22,Math.min(H-12,a[1]-39));svg('line',{x1:a[0],y1:a[1],x2:x,y2:y+6});svg('circle',{cx:a[0],cy:a[1],r:4,fill:'var(--background)',stroke:'var(--foreground)','stroke-width':1.5});svg('rect',{x:x-59,y:y-13,width:118,height:21,rx:3});svg('text',{x,y,'text-anchor':'middle'},item.label);}
+  const item=groups[component.value];if(item.anchor){const a=projectPoint(item.anchor.map((v,i)=>v+item.e[i]*explode)),x=Math.max(65,Math.min(W-65,a[0]+(a[0]>W/2?58:-58))),y=Math.max(22,Math.min(H-12,a[1]-39));svg('line',{x1:a[0],y1:a[1],x2:x,y2:y+6});svg('circle',{cx:a[0],cy:a[1],r:4,fill:'var(--background)',stroke:'var(--foreground)','stroke-width':1.5});svg('rect',{x:x-59,y:y-13,width:118,height:21,rx:3});svg('text',{x,y,'text-anchor':'middle'},t(item.label));}
  }
  function offset(p){return p.e.map((n,i)=>n*explode+(p.g==='shutter'&&i===0&&closed?-18:0));}
  function opacity(p){if(mode!=='inside')return 1;if(['shell','bezel','roof','base','deck','keys','shutterrail','shutter'].includes(p.g))return 0;if(p.g==='display')return .12;return 1;}
@@ -89,12 +90,12 @@ try{
  viewSelect.addEventListener('change',()=>{[yaw,pitch]=views[viewSelect.value];zoom=.9;requestDraw();});
  component.addEventListener('change',()=>{const k=component.value;if(k==='mic'){[yaw,pitch]=[-1.13,.25];viewSelect.value='left';}else if(k==='speaker'){[yaw,pitch]=[.45,1.02];viewSelect.value='top';}else if(k==='compute'){modeSelect.value='inside';changeMode();[yaw,pitch]=[.65,.5];viewSelect.value='iso';}else if(k==='ports'){[yaw,pitch]=views.back;viewSelect.value='back';}else if(k!=='all'){[yaw,pitch]=[.12,.17];viewSelect.value='front';}zoom=.9;setDetail();requestDraw();});
  dimensionCheck.addEventListener('change',()=>{zoom=.9;requestDraw();});
- shutterButton.addEventListener('click',()=>{closed=!closed;shutterButton.setAttribute('aria-pressed',String(closed));shutterButton.textContent=closed?'Abrir obturador':'Fechar obturador';component.value='camera';setDetail();status.appendChild(document.createTextNode(closed?' Obturador fechado na simulação.':' Obturador aberto na simulação.'));requestDraw();});
+ shutterButton.addEventListener('click',()=>{closed=!closed;shutterButton.setAttribute('aria-pressed',String(closed));shutterButton.textContent=t(closed?"Open shutter":"Close shutter");component.value='camera';setDetail();status.appendChild(document.createTextNode(' '+t(closed?'Shutter closed in the simulation.':'Shutter open in the simulation.')));requestDraw();});
  canvas.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,yaw,pitch};canvas.setPointerCapture(e.pointerId);});
  canvas.addEventListener('pointermove',e=>{if(!drag)return;yaw=drag.yaw+(e.clientX-drag.x)*.009;pitch=Math.max(-1.4,Math.min(1.57,drag.pitch-(e.clientY-drag.y)*.008));requestDraw();});
  canvas.addEventListener('lostpointercapture',()=>drag=null);canvas.addEventListener('pointerup',()=>drag=null);canvas.addEventListener('pointercancel',()=>drag=null);
  canvas.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max(.65,Math.min(1.8,zoom*Math.exp(-e.deltaY*.001)));requestDraw();},{passive:false});
- canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();loading.hidden=false;loading.textContent='Visualização 3D interrompida. Reabra esta visualização.';});
+ canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();loading.hidden=false;loading.textContent=t("3D view interrupted. Reload this page.");});
  window.PiCodeViewer={
   setFinish(value){finish=value;requestDraw();},
   setExplosion(value){cancelAnimationFrame(transition);explode=Math.max(0,Math.min(1,value));requestDraw();},
@@ -116,5 +117,5 @@ try{
  });
  loading.hidden=true;draw();new ResizeObserver(requestDraw).observe(canvas.parentElement);root.dataset.ready='true';
  window.dispatchEvent(new Event('picode-ready'));
-}catch(e){loading.textContent='Não foi possível iniciar o 3D neste navegador.';status.textContent=e.message;root.dataset.error=e.message;}
+}catch(e){loading.textContent=t("The 3D view could not start in this browser.");status.textContent=t(e.message);root.dataset.error=e.message;}
 })();

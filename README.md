@@ -1,44 +1,55 @@
-# PiCode Companion — Product studio
+# PiCode Companion
 
-Página em português para explorar o protótipo PiCode Companion C.02, inspirada na navegação de produto do DayRing. Site estático, sem dependências de produção, preparado para Vercel.
+[English](https://picode-companion-c02.vercel.app/en/) · [Português](https://picode-companion-c02.vercel.app/pt/) · [Español](https://picode-companion-c02.vercel.app/es/)
 
-## Conteúdo
+An interactive product studio for the PiCode Companion C.02 desktop AI hardware concept. Explore the original 3D model, exploded assembly, electronics, dimensions and material studies.
 
-- Modelo 3D C.02 original, 146 partes, 59.788 triângulos.
-- Design, vista explodida com controle de separação, eletrônica e ficha técnica.
-- Rotação por mouse, toque e teclado; vistas predefinidas, zoom e cotas.
-- Seleção de componentes e simulação do obturador físico.
-- Três estudos de acabamento, mantendo a geometria do protótipo.
-- Contexto do produto, interações planejadas e etapas de desenvolvimento.
-- Links reais para o repositório PiCode e para fabricantes.
+**Live site:** https://picode-companion-c02.vercel.app/  
+**Repository:** https://github.com/cfpperche/picode-companion
 
-## Estrutura
+The hardware is a preliminary integration study, not a manufacturing-ready product. Voice, vision and PiCode integration are planned capabilities. The website does not execute agents, collect sign-ups or access the camera or microphone.
 
-`public/index.html` é a página. `public/styles.css` contém o layout responsivo. `public/viewer.js` renderiza as malhas WebGL; `public/app.js` controla a interface. `public/assets/companion-c02.b64` contém o JSON de geometria codificado em gzip/base64. As posições usam milímetros e precisão de 0,01 mm no formato de visualização.
+## Languages
 
-O modelo é um estudo de integração, sem liberação para fabricação. Não se apresentam funcionalidades planejadas como já implementadas. A tela não se conecta a agentes reais nem captura câmera, microfone ou dados pessoais.
+English is the default at `/` and `/en/`. Brazilian Portuguese is available at `/pt/`, and Spanish at `/es/`. The header language links work without JavaScript. Opening `/` always shows English; the site does not override the requested default based on browser language.
 
-## Publicação na Vercel
+Each language has pre-rendered HTML, translated metadata and accessible labels, canonical/hreflang links, and its own runtime message catalog. Component details, materials, shutter states and viewer errors are translated as well. Hardware names and units are preserved.
 
-`vercel.json` aponta para `public/`; não é necessário instalar pacotes nem executar build. O projeto pode ser importado na Vercel com framework **Other**, output directory **public** e build command vazio. Para publicar com Vercel CLI autenticada, execute `vercel --prod` na raiz.
+## Edit and build
 
-Para servir localmente: `python3 -m http.server 8080 --directory public`. O servidor HTTP é necessário para carregar a geometria; abrir o HTML por `file://` não funciona.
+- `src/index.html`: canonical English HTML template.
+- `locales/en.json`, `locales/pt.json`, `locales/es.json`: complete translation catalogs; English message text is the key.
+- `scripts/build_locales.py`: dependency-free static locale generator.
+- `public/app.js`: explorer controls and translated UI updates.
+- `public/viewer.js`: WebGL renderer and translated annotations.
+- `public/styles.css`: responsive styling.
+- `public/assets/companion-c02.b64`: original geometry, gzip/base64 JSON, 146 parts and 59,788 triangles.
+- `public/{en,pt,es}/index.html` and `public/locales/*.js`: generated files. Commit them after editing the template or catalogs.
 
-## Navegadores
+```bash
+python3 scripts/build_locales.py
+python3 scripts/check_locales.py
+node scripts/check_runtime.cjs
+node --check public/app.js
+node --check public/viewer.js
+```
 
-WebGL 1 e DecompressionStream (gzip). Navegadores modernos que fornecem essas APIs. Erros de carregamento e indisponibilidade de WebGL são informados no palco. As demais informações da página permanecem em HTML.
+Python 3.9+ generates the static files. Node.js is used only for source and runtime-message checks; there are no production package dependencies.
 
-## Referências
+To run locally:
 
-Veja `BENCHMARKS.md` para a pesquisa, decisões de adaptação e fontes. Nenhuma imagem, fonte, código ou marca dos benchmarks foi incorporada ao projeto.
+```bash
+python3 -m http.server 8080 --directory public
+```
 
-## Publicação
+Open `http://localhost:8080/`. An HTTP server is required to fetch the geometry; `file://` is not supported. The 3D viewer requires WebGL 1 and gzip DecompressionStream. Failure messages are localized; the product information remains readable without the viewer.
 
-- Site público: https://picode-companion-c02.vercel.app/
-- Projeto: `picode-companion-c02`
-- Implantação criada: `dpl_4x8E5AiXjUGavxpmfbzWYh4sduGE`
-- Painel: https://vercel.com/cfpperches-projects/picode-companion-c02
+## Vercel
 
-A criação foi feita pelo conector Vercel com os arquivos completos, com target production. O domínio público foi confirmado via HTTP e o HTML servido corresponde exatamente ao arquivo local. Resultados de conferência estão em `http-verification.json`.
+The existing Vercel project is `picode-companion-c02`. `vercel.json` selects `public` as the output directory, framework Other, and no build command because generated pages are committed.
 
-O alias técnico com sufixo de equipe exige login; use o domínio público acima para compartilhar. A API de consulta de status recusou o escopo da equipe, por isso a validação da publicação se baseia no conteúdo servido, sem afirmar um estado de build consultado via API.
+The files-based deployment and GitHub repository are separate operations. See [VERCEL.md](VERCEL.md) for the exact repository link to configure and its current verification status. Do not create a second Vercel project to enable Git deployments.
+
+## Sources and validation
+
+[BENCHMARKS.md](BENCHMARKS.md) records the original design research. [VALIDATION.md](VALIDATION.md) records the checks and limitations. The original prototype layout keeps the speaker under a recessed top grille and four microphone ports on the left side.

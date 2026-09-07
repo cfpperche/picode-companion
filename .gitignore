@@ -3,3 +3,5 @@ node_modules/
 .env*
 !.env.example
 deployment.json
+__pycache__/
+*.py[cod]

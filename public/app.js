@@ -1,5 +1,6 @@
 (() => {
   'use strict';
+  const t = message => window.PiCodeI18n?.t(message) ?? message;
   document.documentElement.classList.remove('no-js');
   const $ = id => document.getElementById(id);
   const root = $('picode-cyber-c');
@@ -7,9 +8,9 @@
   let activeFinish = 'graphite';
   let activeComponent = 'all';
   const finishes = {
-    graphite: ['Grafite cyberpunk', 'Corpo acetinado · detalhes ciano e magenta', 'CYBERPUNK · GRAFITE + CIANO'],
-    pearl: ['Pérola cyberpunk', 'Corpo claro · detalhes ciano e magenta', 'ESTUDO · PÉROLA + CIANO'],
-    pink: ['Rosa retrô', 'Corpo rosa · moldura preta e detalhes neon', 'ESTUDO · ROSA + NEON']
+    graphite: ["Cyberpunk graphite", "Satin body · cyan and magenta accents", "CYBERPUNK · GRAPHITE + CYAN"],
+    pearl: ["Cyberpunk pearl", "Light body · cyan and magenta accents", "STUDY · PEARL + CYAN"],
+    pink: ["Retro pink", "Pink body · black bezel and neon accents", "STUDY · PINK + NEON"]
   };
   const dispatch = (id, value) => { const element = $(id); element.value = value; element.dispatchEvent(new Event('change')); };
   function switchMode(value) {
@@ -53,9 +54,9 @@
   document.querySelectorAll('[data-finish]').forEach(button => button.addEventListener('click', () => {
     activeFinish = button.dataset.finish;
     const [name, description, caption] = finishes[activeFinish];
-    $('finish-name').textContent = name;
-    $('finish-description').textContent = description;
-    $('scene-caption').textContent = caption;
+    $('finish-name').textContent = t(name);
+    $('finish-description').textContent = t(description);
+    $('scene-caption').textContent = t(caption);
     document.querySelectorAll('[data-finish]').forEach(item => {
       const selected = item === button;
       item.classList.toggle('active', selected);
