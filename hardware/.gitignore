@@ -1,0 +1,6 @@
+__pycache__/
+meshes.json
+meshes.b64
+*.glb
+respeaker-native.json
+respeaker-native.json.gz.b64

@@ -1,0 +1,105 @@
+{
+  "revision": "C.03",
+  "units": "mm",
+  "release": "Visualization and packaging study; not manufacturing CAD",
+  "source_checked": "2026-09-07",
+  "components": [
+    {
+      "name": "ReSpeaker XVF3800",
+      "fidelity": "Native-scale tessellation of supplier STEP; illustrative colors",
+      "variant": "with optional XIAO ESP32S3 as included in supplier CAD; purchase variant not frozen",
+      "source": "https://files.seeedstudio.com/wiki/respeaker_xvf3800_usb/3d/respeaker_mic_array_xvf3800_1_with-xiao-0820.stp",
+      "source_sha256": "0e6f9d82cdf05d0bc0ebb6068e7cf0c3d48de302dc04fb1e16b8d1dad1c1c89d",
+      "source_bounds_mm": [
+        [
+          99.77,
+          -132.97525,
+          -6.735
+        ],
+        [
+          201.58,
+          -30.000654,
+          2.295
+        ]
+      ],
+      "linear_deflection_mm": 0.15,
+      "angular_deflection_rad": 0.35,
+      "solids": 580,
+      "scale_factor": 1,
+      "drawing": "https://files.seeedstudio.com/wiki/respeaker_xvf3800_usb/respeaker_xvf3800_2d_mechanical_drawing.pdf",
+      "limitations": "STEP and 2D drawing are different revisions; exact acoustic port registration and shell sealing require checking. Some supplier solids are not watertight after tessellation. Do not print electronics meshes."
+    },
+    {
+      "name": "Camera Module 3 standard",
+      "fidelity": "Confirmed product envelope; simplified lens, PCB, connector and edge cradle",
+      "envelope_mm": [
+        25,
+        24,
+        11.5
+      ],
+      "source": "https://www.raspberrypi.com/products/camera-module-3/",
+      "design_files": "https://pip.raspberrypi.com/categories/1207-design-files",
+      "limitations": "Detailed camera STEP not imported; attachment holes not invented. Edge saddle is a proposal."
+    },
+    {
+      "name": "Compute Module 5 + CM5-NANO-B",
+      "fidelity": "CM5 55 x 40 envelope; provisional carrier, connector placements and cooling",
+      "source": "https://www.raspberrypi.com/products/compute-module-5/",
+      "carrier_source": "https://www.waveshare.com/cm5-nano-b.htm",
+      "limitations": "55 x 41 carrier PCB retained from C.02 is provisional, not drawing-verified in C.03. Underside RJ45, USB and mini-HDMI blocks are packing reserves. Board-to-board geometry is indicative; no manufacturer hole pattern or final mating height asserted."
+    },
+    {
+      "name": "Waveshare 4inch HDMI LCD (C)",
+      "fidelity": "Nominal active area and provisional board/connector outlines",
+      "source": "https://www.waveshare.com/4inch-hdmi-lcd-c.htm",
+      "limitations": "Retaining clips proposed; board thickness, connector positions, cable exits and fastening not validated."
+    },
+    {
+      "name": "Top speaker",
+      "fidelity": "Generic 40 mm driver reserve with conical diaphragm, open basket, magnet and gasket",
+      "limitations": "No commercial driver selected. Acoustic volume, power, impedance and screw pattern unvalidated."
+    },
+    {
+      "name": "VL53L1X and light sensor",
+      "fidelity": "Carrier/envelope placeholders retained from C.02",
+      "source": "https://www.pololu.com/product/3415",
+      "limitations": "Carrier dimensions and optical stack need selected-module verification; light module unselected."
+    }
+  ],
+  "assembly": "Speaker on top; full microphone PCB vertical on left; camera/display at front; compute cradle behind display.",
+  "validation": {
+    "parts": 845,
+    "triangles": 267320,
+    "bounds_mm": [
+      128.7,
+      183.95,
+      184.0
+    ],
+    "top_joint": {
+      "revision": "C.03 — detailed interior; recessed top speaker grille, microphone array on left wall",
+      "skirt_bottom_z_mm": 180.3,
+      "skirt_inner_opening_mm": [
+        74,
+        64
+      ],
+      "grille_size_mm": [
+        82,
+        72,
+        1.4
+      ],
+      "grille_perforations": 357,
+      "grille_top_z_mm": 184.0,
+      "lid_watertight": true,
+      "assembled_connected_solids": 1,
+      "raw_boolean_components": 1,
+      "component_volume_threshold_mm3": 0.0001,
+      "assembled_watertight": true,
+      "lid_shell_overlap_mm3": 0.0,
+      "skirt_microphone_reserve_overlap_mm3": 0.0,
+      "fit": "Nominal contact; print tolerances and fasteners not defined."
+    },
+    "full_interference_check": false,
+    "thermal_or_acoustic_validation": false,
+    "cable_bend_radius_validated": false
+  }
+}

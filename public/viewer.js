@@ -8,11 +8,11 @@ let mode='exterior',yaw=.59,pitch=.33,zoom=.9,explode=0,closed=false,drag=null,s
 const views={iso:[.59,.33],front:[0,0],right:[Math.PI/2,.05],left:[-Math.PI/2,.12],back:[Math.PI+.37,.23],top:[0,Math.PI/2]};
 const groups={
  all:{label:"General view",info:"Drag to rotate · mouse wheel to zoom · geometric scale in mm."},
- camera:{label:"Camera",anchor:[0,55,165],e:[-26,-20,43],info:"Camera Module 3 · 25 × 24 × 11.5 mm · autofocus + proposed physical shutter.",url:'https://www.raspberrypi.com/products/camera-module-3/'},
- mic:{label:"4 microphones",anchor:[-60.2,90,149],e:[-45,0,0],info:"Four ports on the left side · full Ø100 mm ReSpeaker board mounted vertically.",url:'https://files.seeedstudio.com/wiki/respeaker_xvf3800_usb/respeaker_xvf3800_2d_mechanical_drawing.pdf'},
- speaker:{label:"Speaker",anchor:[0,122,184],e:[0,0,64],info:"Top Ø40 mm speaker · recessed 82 × 72 mm metal grille · reserved 78 × 68 × 30 mm chamber."},
+ camera:{label:"Camera",anchor:[0,55,165],e:[-26,-20,43],info:"Camera Module 3 · 25 × 24 × 11.5 mm envelope. Proposed edge cradle, flat CSI cable and physical shutter; detailed camera CAD still pending.",url:'https://www.raspberrypi.com/products/camera-module-3/'},
+ mic:{label:"4 microphones",anchor:[-60.2,90,149],e:[-45,0,0],info:"ReSpeaker: supplier STEP geometry at native scale, including optional XIAO. Four acoustic ports on the left; variant and sealing to be validated.",url:'https://wiki.seeedstudio.com/respeaker_xvf3800_introduction/#resources'},
+ speaker:{label:"Speaker",anchor:[0,122,184],e:[0,0,64],info:"Top speaker: generic Ø40 mm cone, basket and gasket inside a separate chamber. Recessed 82 × 72 mm grille; commercial driver not yet selected."},
  sensors:{label:"Sensors",anchor:[41,57,161],e:[32,-10,36],info:"VL53L1X ToF on a 13 × 18 mm carrier + 20 × 20 mm space for a light sensor.",url:'https://www.pololu.com/product/3415'},
- compute:{label:'CM5',anchor:[-17,128,99],e:[-45,24,0],info:"CM5 8 GB · 55 × 40 mm; 55 × 41 mm carrier; space reserved for a heatsink and 40 mm fan.",url:'https://www.waveshare.com/cm5-nano-b.htm'},
+ compute:{label:'CM5',anchor:[-17,128,99],e:[-45,24,0],info:"CM5 8 GB · 55 × 40 mm. Proposed removable cradle, separate board connectors and underside I/O reserves. Carrier layout and cooling remain provisional.",url:'https://www.waveshare.com/cm5-nano-b.htm'},
  display:{label:"Display",anchor:[0,63,105],e:[0,-55,2],info:"Waveshare HDMI LCD (C) 4″ · 720 × 720 · reserved mounting space 94 × 94 × 22 mm.",url:'https://www.waveshare.com/4inch-hdmi-lcd-c.htm'},
  ports:{label:"I/O + mute",anchor:[25,183,25],e:[0,0,0],info:"5 V USB-C, service USB and mute switch · internal extensions and mute circuitry still to be developed."}
 };
@@ -21,7 +21,7 @@ function setDetail(){
  if(item.url){const a=document.createElement('a');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=' '+t('Manufacturer');status.appendChild(a);}
 }
 try{
- const response=await fetch('/assets/companion-c02.b64');
+ const response=await fetch('/assets/companion-c03.b64');
  if(!response.ok)throw Error("The model file could not be loaded.");
  const source=atob((await response.text()).trim()),compressed=Uint8Array.from(source,c=>c.charCodeAt(0));
  const stream=new Blob([compressed]).stream().pipeThrough(new DecompressionStream('gzip'));
@@ -59,7 +59,7 @@ try{
   const item=groups[component.value];if(item.anchor){const a=projectPoint(item.anchor.map((v,i)=>v+item.e[i]*explode)),x=Math.max(65,Math.min(W-65,a[0]+(a[0]>W/2?58:-58))),y=Math.max(22,Math.min(H-12,a[1]-39));svg('line',{x1:a[0],y1:a[1],x2:x,y2:y+6});svg('circle',{cx:a[0],cy:a[1],r:4,fill:'var(--background)',stroke:'var(--foreground)','stroke-width':1.5});svg('rect',{x:x-59,y:y-13,width:118,height:21,rx:3});svg('text',{x,y,'text-anchor':'middle'},t(item.label));}
  }
  function offset(p){return p.e.map((n,i)=>n*explode+(p.g==='shutter'&&i===0&&closed?-18:0));}
- function opacity(p){if(mode!=='inside')return 1;if(['shell','bezel','roof','base','deck','keys','shutterrail','shutter'].includes(p.g))return 0;if(p.g==='display')return .12;return 1;}
+ function opacity(p){if($('isolate').checked && component.value!=='all'){const chosen=component.value;const linked=p.g===chosen||(chosen==='speaker'&&['acoustic','roof'].includes(p.g))||(p.g==='mounts'&&JSON.stringify(p.e)===JSON.stringify(groups[chosen].e));if(!linked)return 0;}if(mode!=='inside')return 1;if(['shell','bezel','roof','base','deck','keys','shutterrail','shutter'].includes(p.g))return 0;if(p.g==='acoustic')return .15;if(p.g==='display'&&/LCD · vidro|Área ativa|Pixels|Expressão/.test(p.n))return .12;return 1;}
  function materialColor(p){
   if(finish==='graphite')return p.color;
   const convertible=['base','deck','shell'];
@@ -75,7 +75,7 @@ try{
   const cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch),rot=new Float32Array([cy,sy*sp,-sy*cp,sy,-cy*sp,cy*cp,0,-cp,-sp]);
   const eye=[sy*cp,-cy*cp,sp],lo=[Infinity,Infinity,Infinity],hi=[-Infinity,-Infinity,-Infinity];
   function project(p){const[x,y,z]=p;return[cy*x+sy*y,sy*sp*x-cy*sp*y-cp*z,-sy*cp*x+cy*cp*y-sp*z];}
-  for(const p of parts)for(const c of p.corners){const off=offset(p),q=project(c.map((v,i)=>v+off[i]));for(let i=0;i<3;i++){lo[i]=Math.min(lo[i],q[i]);hi[i]=Math.max(hi[i],q[i]);}}
+  for(const p of parts.filter(p=>!$('isolate').checked||opacity(p)>0))for(const c of p.corners){const off=offset(p),q=project(c.map((v,i)=>v+off[i]));for(let i=0;i<3;i++){lo[i]=Math.min(lo[i],q[i]);hi[i]=Math.max(hi[i],q[i]);}}
   const center=lo.map((v,i)=>(v+hi[i])/2),margin=dimensionCheck.checked?94:40,s=Math.min((W-margin)/(hi[0]-lo[0]),(H-margin)/(hi[1]-lo[1]))*zoom,scale=[2*s/W,2*s/H],depth=(hi[2]-lo[2])/2+250;
   projectPoint=p=>{const q=project(p);return[(q[0]-center[0])*s+W/2,(q[1]-center[1])*s+H/2];};
   function camera(u){gl.uniformMatrix3fv(u.Rotation,false,rot);gl.uniform3fv(u.Center,center);gl.uniform2fv(u.Scale,scale);gl.uniform1f(u.Depth,depth);}
@@ -89,6 +89,7 @@ try{
  modeSelect.addEventListener('change',changeMode);
  viewSelect.addEventListener('change',()=>{[yaw,pitch]=views[viewSelect.value];zoom=.9;requestDraw();});
  component.addEventListener('change',()=>{const k=component.value;if(k==='mic'){[yaw,pitch]=[-1.13,.25];viewSelect.value='left';}else if(k==='speaker'){[yaw,pitch]=[.45,1.02];viewSelect.value='top';}else if(k==='compute'){modeSelect.value='inside';changeMode();[yaw,pitch]=[.65,.5];viewSelect.value='iso';}else if(k==='ports'){[yaw,pitch]=views.back;viewSelect.value='back';}else if(k!=='all'){[yaw,pitch]=[.12,.17];viewSelect.value='front';}zoom=.9;setDetail();requestDraw();});
+ $('isolate').addEventListener('change',()=>{if($('isolate').checked&&component.value==='all'){component.value='compute';component.dispatchEvent(new Event('change'));}zoom=.9;requestDraw();});
  dimensionCheck.addEventListener('change',()=>{zoom=.9;requestDraw();});
  shutterButton.addEventListener('click',()=>{closed=!closed;shutterButton.setAttribute('aria-pressed',String(closed));shutterButton.textContent=t(closed?"Open shutter":"Close shutter");component.value='camera';setDetail();status.appendChild(document.createTextNode(' '+t(closed?'Shutter closed in the simulation.':'Shutter open in the simulation.')));requestDraw();});
  canvas.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,yaw,pitch};canvas.setPointerCapture(e.pointerId);});

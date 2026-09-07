@@ -2,7 +2,7 @@
 
 [English](https://picode-companion-c02.vercel.app/en/) · [Português](https://picode-companion-c02.vercel.app/pt/) · [Español](https://picode-companion-c02.vercel.app/es/)
 
-An interactive product studio for the PiCode Companion C.02 desktop AI hardware concept. Explore the original 3D model, exploded assembly, electronics, dimensions and material studies.
+An interactive product studio for the PiCode Companion C.03 desktop AI hardware concept. Explore the original 3D model, exploded assembly, electronics, dimensions and material studies.
 
 **Live site:** https://picode-companion-c02.vercel.app/  
 **Repository:** https://github.com/cfpperche/picode-companion
@@ -23,7 +23,7 @@ Each language has pre-rendered HTML, translated metadata and accessible labels, 
 - `public/app.js`: explorer controls and translated UI updates.
 - `public/viewer.js`: WebGL renderer and translated annotations.
 - `public/styles.css`: responsive styling.
-- `public/assets/companion-c02.b64`: original geometry, gzip/base64 JSON, 146 parts and 59,788 triangles.
+- `public/assets/companion-c03.b64`: current geometry, gzip/base64 JSON. See `hardware/verificacao.json` for measured counts and bounds.
 - `public/{en,pt,es}/index.html` and `public/locales/*.js`: generated files. Commit them after editing the template or catalogs.
 
 ```bash
@@ -53,3 +53,7 @@ The files-based deployment and GitHub repository are separate operations. See [V
 ## Sources and validation
 
 [BENCHMARKS.md](BENCHMARKS.md) records the original design research. [VALIDATION.md](VALIDATION.md) records the checks and limitations. The original prototype layout keeps the speaker under a recessed top grille and four microphone ports on the left side.
+
+## C.03 interior revision
+
+The model now includes native-scale supplier ReSpeaker geometry, proposed mounting cradles, flat CSI routing and a detailed generic speaker. Use **Isolate component** to inspect a subsystem. See [hardware documentation](hardware/README.md) and [component evidence](hardware/components.json). Other module details remain simplified and the assembly is not released for manufacturing.

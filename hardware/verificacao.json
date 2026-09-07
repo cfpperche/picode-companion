@@ -1,0 +1,312 @@
+{
+  "parts": 845,
+  "triangles": 267320,
+  "bounds_mm": [
+    128.7,
+    183.95,
+    184.0
+  ],
+  "compressed_bytes": 2333344,
+  "groups_mm": {
+    "acoustic": [
+      [
+        -39.0,
+        88.0,
+        150.0
+      ],
+      [
+        39.0,
+        156.0,
+        180.0
+      ]
+    ],
+    "base": [
+      [
+        -64.35,
+        -0.45,
+        0.0
+      ],
+      [
+        64.35,
+        182.8,
+        48.0
+      ]
+    ],
+    "bezel": [
+      [
+        -57.5,
+        56.6,
+        51.0
+      ],
+      [
+        57.5,
+        62.0,
+        181.0
+      ]
+    ],
+    "cables": [
+      [
+        -52.094,
+        73.48,
+        61.264
+      ],
+      [
+        8.0,
+        166.59,
+        173.486
+      ]
+    ],
+    "camera": [
+      [
+        -12.5,
+        56.3,
+        153.0
+      ],
+      [
+        12.5,
+        74.0,
+        177.0
+      ]
+    ],
+    "compute": [
+      [
+        -44.5,
+        105.59,
+        51.7
+      ],
+      [
+        10.55,
+        148.5,
+        103.0
+      ]
+    ],
+    "deck": [
+      [
+        -61.0,
+        1.5,
+        35.5
+      ],
+      [
+        61.0,
+        62.5,
+        42.5
+      ]
+    ],
+    "display": [
+      [
+        -42.0,
+        62.75,
+        63.0
+      ],
+      [
+        42.0,
+        82.0,
+        147.0
+      ]
+    ],
+    "keys": [
+      [
+        -45.85,
+        6.15,
+        33.0
+      ],
+      [
+        51.0,
+        48.85,
+        65.6
+      ]
+    ],
+    "mic": [
+      [
+        -60.375,
+        72.77,
+        66.001
+      ],
+      [
+        -47.765,
+        174.58,
+        168.975
+      ]
+    ],
+    "mounts": [
+      [
+        -54.7,
+        62.0,
+        41.0
+      ],
+      [
+        46.5,
+        152.5,
+        177.5
+      ]
+    ],
+    "mute": [
+      [
+        19.0,
+        180.5,
+        22.0
+      ],
+      [
+        31.0,
+        183.5,
+        28.0
+      ]
+    ],
+    "ports": [
+      [
+        -28.4,
+        180.3,
+        22.75
+      ],
+      [
+        3.15,
+        181.5,
+        27.25
+      ]
+    ],
+    "roof": [
+      [
+        -41.0,
+        86.0,
+        180.3
+      ],
+      [
+        41.0,
+        158.0,
+        184.0
+      ]
+    ],
+    "sensors": [
+      [
+        -50.0,
+        57.0,
+        151.0
+      ],
+      [
+        47.5,
+        66.0,
+        171.0
+      ]
+    ],
+    "shell": [
+      [
+        -60.0,
+        60.927,
+        48.0
+      ],
+      [
+        60.0,
+        179.5,
+        184.0
+      ]
+    ],
+    "shutter": [
+      [
+        11.5,
+        54.975,
+        158.0
+      ],
+      [
+        24.5,
+        56.4,
+        172.0
+      ]
+    ],
+    "shutterrail": [
+      [
+        -8.0,
+        56.45,
+        156.5
+      ],
+      [
+        24.0,
+        57.75,
+        173.5
+      ]
+    ],
+    "speaker": [
+      [
+        -37.0,
+        90.0,
+        159.5
+      ],
+      [
+        37.0,
+        154.0,
+        178.4
+      ]
+    ]
+  },
+  "non_watertight_parts": [
+    "Legenda da tecla",
+    "Legenda da tecla",
+    "Legenda da tecla",
+    "Legenda da tecla",
+    "Legenda da tecla",
+    "Legenda da tecla",
+    "ReSpeaker supplier CAD \u00b7 solid 27",
+    "ReSpeaker supplier CAD \u00b7 solid 29",
+    "ReSpeaker supplier CAD \u00b7 solid 30",
+    "ReSpeaker supplier CAD \u00b7 solid 31",
+    "ReSpeaker supplier CAD \u00b7 solid 35",
+    "ReSpeaker supplier CAD \u00b7 solid 45",
+    "ReSpeaker supplier CAD \u00b7 solid 52",
+    "ReSpeaker supplier CAD \u00b7 solid 106",
+    "ReSpeaker supplier CAD \u00b7 solid 107",
+    "ReSpeaker supplier CAD \u00b7 solid 130",
+    "ReSpeaker supplier CAD \u00b7 solid 142",
+    "ReSpeaker supplier CAD \u00b7 solid 153",
+    "ReSpeaker supplier CAD \u00b7 solid 164",
+    "ReSpeaker supplier CAD \u00b7 solid 171",
+    "ReSpeaker supplier CAD \u00b7 solid 182",
+    "ReSpeaker supplier CAD \u00b7 solid 188",
+    "ReSpeaker supplier CAD \u00b7 solid 189",
+    "ReSpeaker supplier CAD \u00b7 solid 199",
+    "ReSpeaker supplier CAD \u00b7 solid 209",
+    "ReSpeaker supplier CAD \u00b7 solid 211",
+    "ReSpeaker supplier CAD \u00b7 solid 226",
+    "ReSpeaker supplier CAD \u00b7 solid 242",
+    "ReSpeaker supplier CAD \u00b7 solid 256",
+    "ReSpeaker supplier CAD \u00b7 solid 365",
+    "ReSpeaker supplier CAD \u00b7 solid 394",
+    "ReSpeaker supplier CAD \u00b7 solid 398",
+    "ReSpeaker supplier CAD \u00b7 solid 399",
+    "ReSpeaker supplier CAD \u00b7 solid 420",
+    "ReSpeaker supplier CAD \u00b7 solid 468",
+    "ReSpeaker supplier CAD \u00b7 solid 474",
+    "ReSpeaker supplier CAD \u00b7 solid 476",
+    "ReSpeaker supplier CAD \u00b7 solid 477",
+    "ReSpeaker supplier CAD \u00b7 solid 478",
+    "ReSpeaker supplier CAD \u00b7 solid 492",
+    "ReSpeaker supplier CAD \u00b7 solid 496",
+    "ReSpeaker supplier CAD \u00b7 solid 526",
+    "ReSpeaker supplier CAD \u00b7 solid 527",
+    "ReSpeaker supplier CAD \u00b7 solid 528",
+    "ReSpeaker supplier CAD \u00b7 solid 543",
+    "ReSpeaker supplier CAD \u00b7 solid 566"
+  ],
+  "top_joint": {
+    "revision": "C.03 \u2014 detailed interior; recessed top speaker grille, microphone array on left wall",
+    "skirt_bottom_z_mm": 180.3,
+    "skirt_inner_opening_mm": [
+      74,
+      64
+    ],
+    "grille_size_mm": [
+      82,
+      72,
+      1.4
+    ],
+    "grille_perforations": 357,
+    "grille_top_z_mm": 184.0,
+    "lid_watertight": true,
+    "assembled_connected_solids": 1,
+    "raw_boolean_components": 1,
+    "component_volume_threshold_mm3": 0.0001,
+    "assembled_watertight": true,
+    "lid_shell_overlap_mm3": 0.0,
+    "skirt_microphone_reserve_overlap_mm3": 0.0,
+    "fit": "Nominal contact; print tolerances and fasteners not defined."
+  },
+  "scope": "Computed group bounds and top joint only. Supplier STEP tessellation for ReSpeaker; remaining electronics and proposed mounts are simplified. No complete interference, tolerance, cabling, acoustic or thermal validation."
+}

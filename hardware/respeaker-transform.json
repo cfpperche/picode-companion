@@ -1,0 +1,31 @@
+{
+  "matrix": [
+    [
+      0,
+      0,
+      -1,
+      -54.5
+    ],
+    [
+      1,
+      0,
+      0,
+      -27
+    ],
+    [
+      0,
+      -1,
+      0,
+      36
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  "scale": 1,
+  "units": "mm",
+  "variant": "Supplier STEP with optional XIAO; purchasing variant not frozen"
+}

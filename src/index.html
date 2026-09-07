@@ -19,13 +19,13 @@
 <a class="skip-link" href="#explorar">Skip to the 3D explorer</a>
 <header class="header">
   <a href="/" class="brand" aria-label="PiCode Companion, home"><span class="brand-symbol" aria-hidden="true">pi<span>_</span></span><span class="brand-type">PiCode<small>COMPANION</small></span></a>
-  <div class="breadcrumb"><span>Lab</span><span aria-hidden="true">/</span><strong>Desktop agent</strong><span class="revision">C.02</span></div>
+  <div class="breadcrumb"><span>Lab</span><span aria-hidden="true">/</span><strong>Desktop agent</strong><span class="revision">C.03</span></div>
   <a class="github-link" href="https://github.com/cfpperche/picode" target="_blank" rel="noopener noreferrer"><svg viewbox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 19c-4.3 1.3-4.3-2.2-6-2.7M15 22v-3.5c0-1 .1-1.7-.5-2.4 3.3-.4 6.8-1.6 6.8-7.4a5.8 5.8 0 0 0-1.5-4c.2-.7.7-2-.2-3.7 0 0-1.2-.4-4 1.5a13 13 0 0 0-7.2 0C5.6.6 4.4 1 4.4 1c-.9 1.7-.4 3-.2 3.7a5.8 5.8 0 0 0-1.5 4c0 5.8 3.5 7 6.8 7.4-.6.7-.6 1.4-.5 2.4V22" transform="translate(1 1) scale(.9)"/></svg><span>PiCode project</span><span aria-hidden="true">↗</span></a>
 <nav class="language-switcher" aria-label="Language"><a href="/en/" data-language="en" lang="en" hreflang="en" aria-label="English">EN</a><a href="/pt/" data-language="pt" lang="pt-BR" hreflang="pt-BR" aria-label="Português">PT</a><a href="/es/" data-language="es" lang="es" hreflang="es" aria-label="Español">ES</a></nav></header>
 <main id="picode-cyber-c">
   <div class="workspace" id="explorar">
     <section class="studio" aria-label="Prototype explorer">
-      <div class="scene-heading"><div><p class="eyebrow">PICODE COMPANION / C.02</p><h1>Your agents.<br><span>Right here with you.</span></h1></div><span class="concept-tag">Prototype in development</span></div>
+      <div class="scene-heading"><div><p class="eyebrow">PICODE COMPANION / C.03</p><h1>Your agents.<br><span>Right here with you.</span></h1></div><span class="concept-tag">Prototype in development</span></div>
       <div class="mode-bar" role="group" aria-label="Exploration mode">
         <button type="button" class="mode-button active" data-mode="exterior" aria-pressed="true"><span class="mode-number">01</span> Design</button>
         <button type="button" class="mode-button" data-mode="explode" aria-pressed="false"><span class="mode-number">02</span> Exploded</button>
@@ -33,7 +33,7 @@
         <button type="button" class="mode-button" data-mode="specs" aria-pressed="false"><span class="mode-number">04</span> Specifications</button>
       </div>
       <div class="scene-body">
-        <span class="scene-watermark" aria-hidden="true">C.02</span>
+        <span class="scene-watermark" aria-hidden="true">C.03</span>
         <div class="pcc-stage" data-nojs="Enable JavaScript to explore the 3D model.">
           <canvas id="pcc-canvas" tabindex="0" role="img" aria-label="PiCode Companion in 3D. Graphite enclosure, square display, six keys, metal lever and top speaker. Drag or use the arrow keys to rotate; plus and minus adjust zoom."></canvas>
           <svg id="pcc-overlay" aria-hidden="true"></svg>
@@ -45,7 +45,7 @@
       </div>
       <div class="scene-bottom">
         <div class="view-control"><label for="pcc-view">View</label><select id="pcc-view"><option value="iso">Perspective</option><option value="front">Front</option><option value="left">Microphones · left</option><option value="right">Right side</option><option value="back">Rear</option><option value="top">Speaker · top</option></select></div>
-        <span class="gesture-help">Drag to rotate · scroll to zoom</span>
+        <label class="dimensions-toggle"><input type="checkbox" id="pcc-isolate"><span class="switch" aria-hidden="true"></span> Isolate component</label><span class="gesture-help">Drag to rotate · scroll to zoom</span>
         <label class="dimensions-toggle"><input type="checkbox" id="pcc-dims"><span class="switch" aria-hidden="true"></span> Dimensions</label>
       </div>
       <select id="pcc-mode" hidden aria-hidden="true"><option value="exterior">Exterior</option><option value="inside">Interior</option><option value="explode">Exploded</option></select>
@@ -61,10 +61,10 @@
           <button type="button" data-component="camera"><span class="detail-number">03</span><span><strong>An eye on your desk</strong><small>Camera and physical shutter</small></span><span aria-hidden="true">↗</span></button>
           <button type="button" data-component="display"><span class="detail-number">04</span><span><strong>Expressions and information</strong><small>IPS display · 720 × 720</small></span><span aria-hidden="true">↗</span></button>
         </div></section>
-        <section class="inspector-section dimensions-block"><div class="section-label"><h3>A small footprint.</h3><span>ENVELOPE</span></div><div class="dimension-values"><div><strong>129<small>mm</small></strong><span>Width</span></div><div><strong>184<small>mm</small></strong><span>Height</span></div><div><strong>184<small>mm</small></strong><span>Depth</span></div></div><p class="small">Nominal dimensions of the C.02 model.</p></section>
+        <section class="inspector-section dimensions-block"><div class="section-label"><h3>A small footprint.</h3><span>ENVELOPE</span></div><div class="dimension-values"><div><strong>129<small>mm</small></strong><span>Width</span></div><div><strong>184<small>mm</small></strong><span>Height</span></div><div><strong>184<small>mm</small></strong><span>Depth</span></div></div><p class="small">Nominal dimensions of the C.03 model.</p></section>
       </div>
       <div class="panel" data-panel="explode" hidden>
-        <section class="inspector-section"><div class="section-label"><h3>Inside the form</h3><span>146 PARTS</span></div><p>Separate the assembly to explore the enclosure, bezel, controls and space reserved for each module.</p><div class="assembly-list"><div><span>01</span><strong>Grille and acoustic chamber</strong><small>Top-mounted speaker</small></div><div><span>02</span><strong>Enclosure and bezel</strong><small>Rounded body with a continuous top</small></div><div><span>03</span><strong>Electronics</strong><small>Board, camera, display and sensors</small></div><div><span>04</span><strong>Base and controls</strong><small>Six keys, lever and button</small></div></div><p class="engineering-note">Assembly study: mounts, fasteners, cable routing and manufacturing fits still need development.</p></section>
+        <section class="inspector-section"><div class="section-label"><h3>Inside the form</h3><span>DETAILED ASSEMBLY</span></div><p>Separate the assembly to explore the enclosure, bezel, controls and space reserved for each module.</p><div class="assembly-list"><div><span>01</span><strong>Grille and acoustic chamber</strong><small>Top-mounted speaker</small></div><div><span>02</span><strong>Enclosure and bezel</strong><small>Rounded body with a continuous top</small></div><div><span>03</span><strong>Electronics</strong><small>Board, camera, display and sensors</small></div><div><span>04</span><strong>Base and controls</strong><small>Six keys, lever and button</small></div></div><p class="engineering-note">C.03 adds supplier ReSpeaker geometry, proposed cradles and flat CSI routing. Other modules remain simplified; fits and cable connections require validation.</p></section>
       </div>
       <div class="panel" data-panel="inside" hidden>
         <section class="inspector-section"><div class="section-label"><h3>Reference hardware</h3><span>UNDER EVALUATION</span></div><p>Components shown to scale, with room for connections and cooling.</p><div class="hardware-list">
@@ -77,13 +77,13 @@
         </div><p class="engineering-note">Preliminary selection. Electrical compatibility, thermal performance and acoustics require bench testing.</p></section>
       </div>
       <div class="panel" data-panel="specs" hidden>
-        <section class="inspector-section"><div class="section-label"><h3>Specifications</h3><span>C.02</span></div><table class="spec-table"><caption class="sr-only">Preliminary specifications of the PiCode Companion model</caption><tbody><tr><th scope="row">Dimensions W × H × D</th><td>129 × 184 × 184 mm</td></tr><tr><th scope="row">Display</th><td>IPS 4″ · 720 × 720</td></tr><tr><th scope="row">Proposed computing</th><td>CM5 · 8 GB</td></tr><tr><th scope="row">Vision</th><td>Camera Module 3</td></tr><tr><th scope="row">Audio</th><td>4 side microphones<br>Top-mounted speaker</td></tr><tr><th scope="row">Planned sensors</th><td>ToF distance and light</td></tr><tr><th scope="row">Controls</th><td>6 keys, lever and button</td></tr><tr><th scope="row">Capture</th><td>Proposed shutter and mute switch</td></tr><tr><th scope="row">Planned power supply</th><td>USB-C · 5 V<br>Power budget to be validated</td></tr><tr><th scope="row">Planned manufacturing</th><td>3D printing and assembly</td></tr></tbody></table><p class="engineering-note">The scale refers to the geometric model. This revision is not yet released for manufacturing.</p></section>
+        <section class="inspector-section"><div class="section-label"><h3>Specifications</h3><span>C.03</span></div><table class="spec-table"><caption class="sr-only">Preliminary specifications of the PiCode Companion model</caption><tbody><tr><th scope="row">Dimensions W × H × D</th><td>129 × 184 × 184 mm</td></tr><tr><th scope="row">Display</th><td>IPS 4″ · 720 × 720</td></tr><tr><th scope="row">Proposed computing</th><td>CM5 · 8 GB</td></tr><tr><th scope="row">Vision</th><td>Camera Module 3</td></tr><tr><th scope="row">Audio</th><td>4 side microphones<br>Top-mounted speaker</td></tr><tr><th scope="row">Planned sensors</th><td>ToF distance and light</td></tr><tr><th scope="row">Controls</th><td>6 keys, lever and button</td></tr><tr><th scope="row">Capture</th><td>Proposed shutter and mute switch</td></tr><tr><th scope="row">Planned power supply</th><td>USB-C · 5 V<br>Power budget to be validated</td></tr><tr><th scope="row">Planned manufacturing</th><td>3D printing and assembly</td></tr></tbody></table><p class="engineering-note">The scale refers to the geometric model. This revision is not yet released for manufacturing.</p></section>
       </div>
       <div class="selection-note" id="selection-note" hidden><span class="eyebrow">ON THE MODEL</span><p id="pcc-detail" aria-live="polite">Select a component to learn more.</p><button type="button" id="pcc-shutter" aria-pressed="false" hidden>Close shutter</button><button type="button" id="clear-selection" class="text-button">Clear selection</button></div>
       <div class="inspector-end"><a href="#ideia">Discover the idea <span aria-hidden="true">↓</span></a></div>
     </aside>
   </div>
-  <div class="model-foot"><span>MODEL IN MILLIMETERS</span><span>DESIGN C.02 · SEP 2026</span><span>CONCEPT / IN DEVELOPMENT</span></div>
+  <div class="model-foot"><span>MODEL IN MILLIMETERS</span><span>DESIGN C.03 · SEP 2026</span><span>CONCEPT / IN DEVELOPMENT</span></div>
   <section id="ideia" class="story-section">
     <div class="story-title"><p class="eyebrow">01 / THE IDEA</p><h2>From your browser window<br>to a place on your desk.</h2></div>
     <div class="story-copy"><p>PiCode brings your agents, projects and decisions together in a development environment. Companion is designed to give that work a physical presence.</p><p>The idea is simple: have a conversation, show an object and notice when an agent needs you. All while staying connected to the right project and session.</p><a class="inline-link" href="https://github.com/cfpperche/picode" target="_blank" rel="noopener noreferrer">Explore the PiCode software <span aria-hidden="true">↗</span></a></div>
