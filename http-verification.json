@@ -1,0 +1,50 @@
+[
+  {
+    "path": "/styles.css",
+    "status": 200,
+    "url": "https://picode-companion-c02.vercel.app/styles.css",
+    "bytes": 20927,
+    "matches_local": true,
+    "type": "text/css; charset=utf-8"
+  },
+  {
+    "path": "/viewer.js",
+    "status": 200,
+    "url": "https://picode-companion-c02.vercel.app/viewer.js",
+    "bytes": 14900,
+    "matches_local": true,
+    "type": "application/javascript; charset=utf-8"
+  },
+  {
+    "path": "/app.js",
+    "status": 200,
+    "url": "https://picode-companion-c02.vercel.app/app.js",
+    "bytes": 4430,
+    "matches_local": true,
+    "type": "application/javascript; charset=utf-8"
+  },
+  {
+    "path": "/",
+    "status": 200,
+    "url": "https://picode-companion-c02.vercel.app/",
+    "bytes": 16547,
+    "matches_local": true,
+    "type": "text/html; charset=utf-8"
+  },
+  {
+    "path": "/favicon.svg",
+    "status": 200,
+    "url": "https://picode-companion-c02.vercel.app/favicon.svg",
+    "bytes": 274,
+    "matches_local": true,
+    "type": "image/svg+xml"
+  },
+  {
+    "path": "/assets/companion-c02.b64",
+    "status": 200,
+    "url": "https://picode-companion-c02.vercel.app/assets/companion-c02.b64",
+    "bytes": 565016,
+    "matches_local": true,
+    "type": "application/octet-stream"
+  }
+]
