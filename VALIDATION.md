@@ -18,4 +18,4 @@ The original C.02 geometry contains 146 parts and 59,788 triangles. The exterior
 
 ## Hosting and repository
 
-The initial release's public HTTP checks are retained in `http-verification.json` as a historical record. Each later publication is checked against the new localized files directly. Native Git integration remains pending because the Vercel settings connection returned 403; see `VERCEL.md`.
+The initial release's public HTTP checks are retained in `http-verification.json` as a historical record. Each later publication is checked against the new localized files directly. The owner connected the GitHub repository in Vercel and provided dashboard confirmation. The API still returns 403 for project settings; automatic Git deployment is being checked separately. See `VERCEL.md`.

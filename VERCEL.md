@@ -10,9 +10,11 @@
 
 ## Connection status
 
-The repository upload is complete. The available Vercel connection returned **403 Forbidden** when reading this team's project settings. It exposes no project-update or Git-connect operation, and no authenticated Vercel CLI or VERCEL_TOKEN is available in the workspace. Therefore the Git connection has **not been configured or verified** by this task. Publishing files directly does not establish a Git connection.
+The repository `cfpperche/picode-companion` is connected to the existing Vercel project, confirmed by the owner's screenshot of **Connected Git Repository**. Git-triggered deployment is being checked with this documentation commit.
 
-## Connect the existing project
+The connected Vercel API still returns 403 for the team's settings. That API limitation is separate from the Git connection shown in the dashboard.
+
+## Configuration reference
 
 1. Open [the existing project's Git settings](https://vercel.com/cfpperches-projects/picode-companion-c02/settings/git).
 2. Under Connected Git Repository, connect GitHub and select `cfpperche/picode-companion`.
