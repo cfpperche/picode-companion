@@ -227,6 +227,8 @@ from interior import revise
 revise(globals())
 from rotation import revise as add_rotation, verify as verify_rotation
 add_rotation(globals())
+from unibody import revise as unify_exterior
+unify_exterior(globals())
 
 def export():
     view=[];scene=tm.Scene()
@@ -283,6 +285,7 @@ def export():
     report['scope']='Computed group bounds and top joint only. Supplier STEP tessellation for ReSpeaker; remaining electronics and proposed mounts are simplified. No complete interference, tolerance, cabling, acoustic or thermal validation.'
 
     report['rotation']={**rotation_spec,**verify_rotation(PARTS)}
+    report['unibody']=unibody_spec
     (ROOT/'verificacao.json').write_text(json.dumps(report,indent=2))
     print(json.dumps(report))
 

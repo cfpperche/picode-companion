@@ -64,7 +64,7 @@ Stop clearances and their attachments remain to be detailed and bench tested.
 The bearings and pedestal carry axial weight, overturning moments and belt load;
 the servo only actuates yaw. Bearing shoulders, fits, axial retention, bridge
 fasteners, belt preload and fatigue life still need engineering drawings.
-The cover is removable and is not a bearing support.
+The drive cover is integrated into the continuous base skin and is not a bearing support. Service access from the underside remains to be detailed.
 
 The 1.5× speed/travel increase reduces torque:
 
@@ -153,7 +153,7 @@ for USB and other high-speed signals.
   supports the distinction between speed control and positional control.
 
 `verificacao.json` records computed geometry bounds, the translated C.03 top-joint
-check and an analytic 15.4 mm vertical gap between all legacy head geometry and
+check and an analytic 5.5 mm vertical gap between all legacy head geometry and
 all base/key geometry. That gap is invariant for every yaw angle. It does not
 establish complete collision freedom inside the new transmission or head.
 `scripts/check_motion.cjs` checks signed-angle limits, servo mapping, rigid
@@ -174,3 +174,21 @@ posicional SC09 y correa 3:2. La cabeza gira completa sobre rodamientos; teclado
 conexiones traseras quedan fijos. La base se amplió a 160 mm y la cabeza se elevó
 40 mm. La simulación permite explorar el movimiento; par, cables, ajustes,
 fijaciones y alimentación todavía requieren validación física.
+
+
+## Continuous exterior revision
+
+The base bottom, keyboard deck, rear deck and drive cover are replaced by one
+connected watertight exterior solid. Its rounded rear rise encloses the belt
+without a separate stacked cover. Switch openings retain the existing layout.
+The head tray and attachment rim are incorporated into the head shell with a
+rounded transition and one finish, retaining the 16 mm cable opening. They no
+longer separate in exploded view. The front display bezel and top grille retain
+their functional openings. Both unified bodies follow the existing material selector.
+
+The exterior base-to-head vertical gap is 5.5 mm at every yaw angle. The upper
+shell, native-scale electronics, pivot and ±180° motion mapping remain unchanged.
+`unibody.py` verifies one watertight connected solid per exterior body. These are
+appearance and packaging surfaces; underside/rear service closures, wall thickness,
+mount fasteners, printing strategy and complete internal interference checks are
+not finalized. The unified base becomes transparent when inspecting the drive.

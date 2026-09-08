@@ -25,7 +25,7 @@ function setDetail(){
  if(item.url){const a=document.createElement('a');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=' '+t('Manufacturer');status.appendChild(a);}
 }
 try{
- const response=await fetch('/assets/companion-c04.b64');
+ const response=await fetch('/assets/companion-c04.b64?v=unibody-1');
  if(!response.ok)throw Error("The model file could not be loaded.");
  const source=atob((await response.text()).trim()),compressed=Uint8Array.from(source,c=>c.charCodeAt(0));
  const stream=new Blob([compressed]).stream().pipeThrough(new DecompressionStream('gzip'));
@@ -63,7 +63,7 @@ try{
   const item=groups[component.value];if(item.anchor){const a=projectPoint(motion.transform(item.anchor,['ports','rotation'].includes(component.value)?'fixed':'head',headAngle).map((v,i)=>v+item.e[i]*explode)),x=Math.max(65,Math.min(W-65,a[0]+(a[0]>W/2?58:-58))),y=Math.max(22,Math.min(H-12,a[1]-39));svg('line',{x1:a[0],y1:a[1],x2:x,y2:y+6});svg('circle',{cx:a[0],cy:a[1],r:4,fill:'var(--background)',stroke:'var(--foreground)','stroke-width':1.5});svg('rect',{x:x-59,y:y-13,width:118,height:21,rx:3});svg('text',{x,y,'text-anchor':'middle'},t(item.label));}
  }
  function offset(p){const a=headAngle*Math.PI/180,slide=p.g==='shutter'&&closed?[-18*Math.cos(a),-18*Math.sin(a),0]:[0,0,0];return p.e.map((n,i)=>n*explode+slide[i]);}
- function opacity(p){if($('isolate').checked && component.value!=='all'){const chosen=component.value;const linked=p.g===chosen||(chosen==='rotation'&&p.g==='rotation_cover')||(chosen==='speaker'&&['acoustic','roof'].includes(p.g))||(p.g==='mounts'&&JSON.stringify(p.e)===JSON.stringify(groups[chosen].e));if(!linked)return 0;}if(component.value==='rotation'&&p.g==='rotation_cover')return .12;if(mode!=='inside')return 1;if(['shell','bezel','roof','base','deck','keys','shutterrail','shutter','rotation_cover'].includes(p.g))return 0;if(p.g==='acoustic')return .15;if(p.g==='display'&&/LCD · vidro|Área ativa|Pixels|Expressão/.test(p.n))return .12;return 1;}
+ function opacity(p){if($('isolate').checked && component.value!=='all'){const chosen=component.value;const linked=p.g===chosen||(chosen==='rotation'&&(p.g==='rotation_cover'||p.n==='Base / 160 x 182 mm'))||(chosen==='speaker'&&['acoustic','roof'].includes(p.g))||(p.g==='mounts'&&JSON.stringify(p.e)===JSON.stringify(groups[chosen].e));if(!linked)return 0;}if(component.value==='rotation'&&(p.g==='rotation_cover'||p.n==='Base / 160 x 182 mm'))return .12;if(mode!=='inside')return 1;if(['shell','bezel','roof','base','deck','keys','shutterrail','shutter','rotation_cover'].includes(p.g))return 0;if(p.g==='acoustic')return .15;if(p.g==='display'&&/LCD · vidro|Área ativa|Pixels|Expressão/.test(p.n))return .12;return 1;}
  function materialColor(p){
   if(finish==='graphite')return p.color;
   const convertible=['base','deck','shell','rotation_cover'];

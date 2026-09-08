@@ -57,3 +57,7 @@ Compress the resulting JSON with gzip and base64 to `respeaker-native.json.gz.b6
 6. Follow the C.04 rotating-head assembly steps before routing the flex harness and closing the covers.
 
 Before producing functional STL: resolve the carrier geometry, select the speaker/cooling/light modules, validate all supports and fasteners, perform full interference checks, and test acoustic isolation and temperature on the assembled prototype.
+
+## Continuous exterior
+
+`unibody.py` runs after the interior and rotation revisions. It replaces stacked base surfaces with one continuous skin and integrates the head tray into the rounded head shell. See `ROTATING_HEAD.md` and the `unibody` section of `verificacao.json` for verification and limits.

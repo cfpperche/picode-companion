@@ -1,12 +1,12 @@
 {
-  "parts": 998,
-  "triangles": 279856,
+  "parts": 992,
+  "triangles": 279792,
   "bounds_mm": [
     160.0,
     183.95,
     224.0
   ],
-  "compressed_bytes": 2458020,
+  "compressed_bytes": 2462120,
   "groups_mm": {
     "acoustic": [
       [
@@ -29,7 +29,7 @@
       [
         80.0,
         182.8,
-        40.5
+        72.5
       ]
     ],
     "bezel": [
@@ -82,13 +82,13 @@
     ],
     "deck": [
       [
-        -61.0,
-        1.5,
-        35.5
+        -18.5,
+        52.0,
+        41.5
       ],
       [
-        61.0,
-        62.5,
+        18.5,
+        54.0,
         42.5
       ]
     ],
@@ -179,25 +179,13 @@
     "rotation": [
       [
         -73.527,
-        60.5,
+        81.0,
         10.0
       ],
       [
-        59.5,
+        51.0,
         183.5,
         98.343
-      ]
-    ],
-    "rotation_cover": [
-      [
-        -79.0,
-        80.0,
-        41.5
-      ],
-      [
-        75.0,
-        156.0,
-        72.5
       ]
     ],
     "sensors": [
@@ -216,7 +204,7 @@
       [
         -60.0,
         60.927,
-        88.0
+        78.0
       ],
       [
         60.0,
@@ -368,12 +356,24 @@
     ],
     "head_height_increase_mm": 40,
     "fidelity": "Packaging reserves, illustrative teeth and flex routing; no manufacturing release.",
-    "legacy_head_to_base_vertical_clearance_mm": 15.4,
+    "legacy_head_to_base_vertical_clearance_mm": 5.5,
     "rotating_radius_mm": 82.69,
     "swept_diameter_mm": 165.379,
     "legacy_head_base_collision_free_all_yaw_angles": true,
     "servo_end_margin_deg": 30,
     "full_assembly_collision_checked": false,
     "cable_flex_or_bearing_fit_validated": false
+  },
+  "unibody": {
+    "base": {
+      "watertight": true,
+      "connected_solids": 1
+    },
+    "head_with_platform": {
+      "watertight": true,
+      "connected_solids": 1
+    },
+    "exterior_vertical_clearance_all_yaw_mm": 5.5,
+    "scope": "Continuous exterior skins and yaw separation only; service access, print tolerances and internal fits remain preliminary."
   }
 }
