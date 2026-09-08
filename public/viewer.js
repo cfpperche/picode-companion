@@ -19,13 +19,13 @@ const groups={
  rotation:{label:"Rotating base",anchor:[0,118,73],e:[0,0,0],info:"SC09 positional microservo + 72:48 belt drive. Head travel: −180° to +180°. Two bearing reserves and a hollow spindle carry the head; cable routing and torque need bench validation.",url:'https://www.waveshare.com/wiki/SC09_Servo'},
  ports:{label:"I/O + mute",anchor:[25,183,25],e:[0,0,0],info:"5 V USB-C, service USB and mute switch · internal extensions and mute circuitry still to be developed."}
 };
-for(const [key,item] of Object.entries(groups)){if(item.anchor&&!['ports','rotation'].includes(key))item.anchor[2]+=40;}
+for(const [key,item] of Object.entries(groups)){if(item.anchor&&!['ports','rotation'].includes(key))item.anchor[2]+=40+({display:6,camera:3,sensors:6}[key]||0);}
 function setDetail(){
  const item=groups[component.value];status.replaceChildren(document.createTextNode(t(item.info)));
  if(item.url){const a=document.createElement('a');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=' '+t('Manufacturer');status.appendChild(a);}
 }
 try{
- const response=await fetch('/assets/companion-c04.b64?v=unibody-1');
+ const response=await fetch('/assets/companion-c04.b64?v=centered-display-1');
  if(!response.ok)throw Error("The model file could not be loaded.");
  const source=atob((await response.text()).trim()),compressed=Uint8Array.from(source,c=>c.charCodeAt(0));
  const stream=new Blob([compressed]).stream().pipeThrough(new DecompressionStream('gzip'));

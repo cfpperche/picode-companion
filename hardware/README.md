@@ -61,3 +61,18 @@ Before producing functional STL: resolve the carrier geometry, select the speake
 ## Continuous exterior
 
 `unibody.py` runs after the interior and rotation revisions. It replaces stacked base surfaces with one continuous skin and integrates the head tray into the rounded head shell. See `ROTATING_HEAD.md` and the `unibody` section of `verificacao.json` for verification and limits.
+
+## Centered display and printed front
+
+`front_panel.py` centers the unchanged 84 × 84 mm LCD glass on the head's
+120 × 146 mm front (x=0, z=151 mm). Its 72.53 mm active area remains at native
+scale. A 76 × 76 mm opening leaves 22 mm lateral margins and 35 mm upper/lower
+margins, filled by a front panel integrated with the printed shell. The camera
+and sensor openings remain functional. The camera and its cradle move 3 mm up,
+the sensors move 6 mm up, and the LCD and its supports move 6 mm up. The CSI
+route's upper end follows the camera. The old full-face black bezel is removed;
+the accent light now outlines only the display. The lower front is closed.
+
+The build verifies LCD dimensions/centering, one connected watertight head shell,
+and zero positive-volume interference between the moved display and camera
+assemblies. This does not release print-ready CAD or validate all internal parts.

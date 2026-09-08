@@ -229,6 +229,10 @@ from rotation import revise as add_rotation, verify as verify_rotation
 add_rotation(globals())
 from unibody import revise as unify_exterior
 unify_exterior(globals())
+from front_panel import revise as close_front
+close_front(globals())
+from unibody import verify as verify_unibody
+unibody_spec=verify_unibody(next(p['mesh'] for p in PARTS if p['n']=='Base / 160 x 182 mm'),next(p['mesh'] for p in PARTS if p['n']=='Carcaça do monitor'))
 
 def export():
     view=[];scene=tm.Scene()
@@ -286,6 +290,7 @@ def export():
 
     report['rotation']={**rotation_spec,**verify_rotation(PARTS)}
     report['unibody']=unibody_spec
+    report['front_panel']=front_panel_spec
     (ROOT/'verificacao.json').write_text(json.dumps(report,indent=2))
     print(json.dumps(report))
 

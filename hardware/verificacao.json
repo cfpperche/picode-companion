@@ -1,12 +1,12 @@
 {
-  "parts": 992,
-  "triangles": 279792,
+  "parts": 981,
+  "triangles": 278870,
   "bounds_mm": [
     160.0,
     183.95,
     224.0
   ],
-  "compressed_bytes": 2462120,
+  "compressed_bytes": 2455484,
   "groups_mm": {
     "acoustic": [
       [
@@ -34,14 +34,14 @@
     ],
     "bezel": [
       [
-        -57.5,
-        56.6,
-        91.0
+        -40.0,
+        59.4,
+        111.0
       ],
       [
-        57.5,
-        62.0,
-        221.0
+        40.0,
+        60.2,
+        191.0
       ]
     ],
     "cables": [
@@ -60,12 +60,12 @@
       [
         -12.5,
         56.3,
-        193.0
+        196.0
       ],
       [
         12.5,
         74.0,
-        217.0
+        220.0
       ]
     ],
     "compute": [
@@ -96,12 +96,12 @@
       [
         -42.0,
         62.75,
-        103.0
+        109.0
       ],
       [
         42.0,
         82.0,
-        187.0
+        193.0
       ]
     ],
     "keys": [
@@ -137,7 +137,7 @@
       [
         46.5,
         152.5,
-        217.5
+        220.5
       ]
     ],
     "mute": [
@@ -192,18 +192,18 @@
       [
         -50.0,
         57.0,
-        191.0
+        197.0
       ],
       [
         47.5,
         66.0,
-        211.0
+        217.0
       ]
     ],
     "shell": [
       [
         -60.0,
-        60.927,
+        59.65,
         78.0
       ],
       [
@@ -216,24 +216,24 @@
       [
         11.5,
         54.975,
-        198.0
+        201.0
       ],
       [
         24.5,
         56.4,
-        212.0
+        215.0
       ]
     ],
     "shutterrail": [
       [
         -8.0,
         56.45,
-        196.5
+        199.5
       ],
       [
         24.0,
         57.75,
-        213.5
+        216.5
       ]
     ],
     "speaker": [
@@ -316,7 +316,7 @@
     "raw_boolean_components": 1,
     "component_volume_threshold_mm3": 0.0001,
     "assembled_watertight": true,
-    "lid_shell_overlap_mm3": 0.0,
+    "lid_shell_overlap_mm3": -6.063298011819521e-13,
     "skirt_microphone_reserve_overlap_mm3": 0.0,
     "fit": "Nominal contact; print tolerances and fasteners not defined."
   },
@@ -357,8 +357,8 @@
     "head_height_increase_mm": 40,
     "fidelity": "Packaging reserves, illustrative teeth and flex routing; no manufacturing release.",
     "legacy_head_to_base_vertical_clearance_mm": 5.5,
-    "rotating_radius_mm": 82.69,
-    "swept_diameter_mm": 165.379,
+    "rotating_radius_mm": 82.368,
+    "swept_diameter_mm": 164.735,
     "legacy_head_base_collision_free_all_yaw_angles": true,
     "servo_end_margin_deg": 30,
     "full_assembly_collision_checked": false,
@@ -375,5 +375,28 @@
     },
     "exterior_vertical_clearance_all_yaw_mm": 5.5,
     "scope": "Continuous exterior skins and yaw separation only; service access, print tolerances and internal fits remain preliminary."
+  },
+  "front_panel": {
+    "lcd_center_xz_mm": [
+      0.0,
+      151.0
+    ],
+    "glass_size_mm": [
+      84,
+      84
+    ],
+    "active_size_mm": [
+      72.53,
+      72.53
+    ],
+    "front_opening_mm": [
+      76,
+      76
+    ],
+    "side_margin_mm": 22,
+    "top_bottom_margin_mm": 35,
+    "camera_display_overlap_mm3": 0.0,
+    "front_integrated_with_shell": true,
+    "scope": "Visual enclosure and selected camera/display clearances; production wall thickness, fasteners and tolerances require detailed CAD."
   }
 }
