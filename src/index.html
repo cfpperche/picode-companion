@@ -13,7 +13,10 @@
   <link rel="stylesheet" href="/styles.css">
   <script src="/locales/runtime.js" defer></script>
   <script src="/motion.js" defer></script>
+  <script src="/model.js" defer></script>
   <script src="/viewer.js" defer></script>
+  <script src="/part-renderer.js" defer></script>
+  <script src="/catalog.js" defer></script>
   <script src="/app.js" defer></script>
 </head>
 <body>
@@ -24,6 +27,7 @@
   <a class="github-link" href="https://github.com/cfpperche/picode" target="_blank" rel="noopener noreferrer"><svg viewbox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 19c-4.3 1.3-4.3-2.2-6-2.7M15 22v-3.5c0-1 .1-1.7-.5-2.4 3.3-.4 6.8-1.6 6.8-7.4a5.8 5.8 0 0 0-1.5-4c.2-.7.7-2-.2-3.7 0 0-1.2-.4-4 1.5a13 13 0 0 0-7.2 0C5.6.6 4.4 1 4.4 1c-.9 1.7-.4 3-.2 3.7a5.8 5.8 0 0 0-1.5 4c0 5.8 3.5 7 6.8 7.4-.6.7-.6 1.4-.5 2.4V22" transform="translate(1 1) scale(.9)"/></svg><span>PiCode project</span><span aria-hidden="true">↗</span></a>
 <nav class="language-switcher" aria-label="Language"><a href="/en/" data-language="en" lang="en" hreflang="en" aria-label="English">EN</a><a href="/pt/" data-language="pt" lang="pt-BR" hreflang="pt-BR" aria-label="Português">PT</a><a href="/es/" data-language="es" lang="es" hreflang="es" aria-label="Español">ES</a></nav></header>
 <main id="picode-cyber-c">
+  <nav class="project-nav" aria-label="Project navigation"><a href="#explorar">3D explorer</a><a href="#materiais">Parts &amp; materials <span aria-hidden="true">↘</span></a></nav>
   <div class="workspace" id="explorar">
     <section class="studio" aria-label="Prototype explorer">
       <div class="scene-heading"><div><p class="eyebrow">PICODE COMPANION / C.04</p><h1>Your agents.<br><span>Right here with you.</span></h1></div><span class="concept-tag">Prototype in development</span></div>
@@ -87,6 +91,7 @@
     </aside>
   </div>
   <div class="model-foot"><span>MODEL IN MILLIMETERS</span><span>DESIGN C.04 · SEP 2026</span><span>CONCEPT / IN DEVELOPMENT</span></div>
+  <!-- PARTS_CATALOG -->
   <section id="ideia" class="story-section">
     <div class="story-title"><p class="eyebrow">01 / THE IDEA</p><h2>From your browser window<br>to a place on your desk.</h2></div>
     <div class="story-copy"><p>PiCode brings your agents, projects and decisions together in a development environment. Companion is designed to give that work a physical presence.</p><p>The idea is simple: have a conversation, show an object and notice when an agent needs you. All while staying connected to the right project and session.</p><a class="inline-link" href="https://github.com/cfpperche/picode" target="_blank" rel="noopener noreferrer">Explore the PiCode software <span aria-hidden="true">↗</span></a></div>

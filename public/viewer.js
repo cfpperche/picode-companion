@@ -25,11 +25,7 @@ function setDetail(){
  if(item.url){const a=document.createElement('a');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=' '+t('Manufacturer');status.appendChild(a);}
 }
 try{
- const response=await fetch('/assets/companion-c04.b64?v=centered-display-1');
- if(!response.ok)throw Error("The model file could not be loaded.");
- const source=atob((await response.text()).trim()),compressed=Uint8Array.from(source,c=>c.charCodeAt(0));
- const stream=new Blob([compressed]).stream().pipeThrough(new DecompressionStream('gzip'));
- const raw=JSON.parse(await new Response(stream).text());
+ const raw=await window.PiCodeModel.load();
  const gl=canvas.getContext('webgl',{alpha:true,antialias:true,premultipliedAlpha:false});
  if(!gl)throw Error("WebGL is unavailable");
  function program(vs,fs){const p=gl.createProgram();for(const [t,s] of [[gl.VERTEX_SHADER,vs],[gl.FRAGMENT_SHADER,fs]]){const sh=gl.createShader(t);gl.shaderSource(sh,s);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(sh));gl.attachShader(p,sh);}gl.linkProgram(p);if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(p));return p;}

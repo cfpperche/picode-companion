@@ -3,6 +3,8 @@
 from html import escape
 from html.parser import HTMLParser
 import json
+import csv
+from build_catalog import build_data, markup
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -45,6 +47,8 @@ class Translator(HTMLParser):
             attrs['content'] = self.translate(attrs['content'])
         if tag == 'html':
             attrs['lang'] = self.meta['tag']
+        if tag == 'a' and attrs.get('id') == 'bom-download':
+            attrs['href'] = f'/bom/{self.language}.csv'
         if tag == 'a' and attrs.get('href') == '/':
             attrs['href'] = self.meta['path']
         if tag == 'a' and attrs.get('data-language') == self.language:
@@ -73,14 +77,24 @@ class Translator(HTMLParser):
         self.parts.append(escape(self.translate(data), quote=False))
 
 
+def read_template():
+    return (ROOT / "src/index.html").read_text().replace("<!-- PARTS_CATALOG -->", markup(json.loads((ROOT / "public/catalog.json").read_text())))
+
 def build():
+    data = build_data()
     catalogs = {language: json.loads((ROOT / 'locales' / f'{language}.json').read_text()) for language in LANGUAGES}
     keys = set(catalogs['en'])
     for language, catalog in catalogs.items():
         if set(catalog) != keys or any(not isinstance(v, str) or not v.strip() for v in catalog.values()):
             raise ValueError(f'Incomplete translation catalog: {language}')
-    template = (ROOT / 'src' / 'index.html').read_text()
+    template = read_template()
     for language, catalog in catalogs.items():
+        csv_dir=ROOT / 'public/bom';csv_dir.mkdir(exist_ok=True)
+        with (csv_dir / f'{language}.csv').open('w',encoding='utf-8-sig',newline='') as output:
+            writer=csv.writer(output)
+            writer.writerow([catalog.get(k,k) for k in ['ID','Item','Category','Quantity','Unit','Specification','Definition','Reference']])
+            for item in data['items']:
+                writer.writerow([item['id'],catalog[item['name']],catalog[item['category']],item['quantity'] if item['quantity'] is not None else catalog['To specify'],catalog[item['unit']],catalog[item['specification']],catalog[item['status']],item.get('source','')])
         translator = Translator(catalog, language)
         translator.feed(template)
         translator.close()
