@@ -47,3 +47,12 @@ The initial release's public HTTP checks are retained in `http-verification.json
   unavailable because this runtime lacks EGL/OSMesa.
 - No physical torque, cable-life, bearing-fit, thermal or acoustic validation.
   This revision is a visualization and packaging study, not a fabrication release.
+
+## C.04 parts catalog
+
+- 55 unique BOM entries; 53 have model geometry. All 979 physical visual meshes are assigned exactly once; two branding-text meshes are explicitly excluded. Supplier board solids remain a single assembly item.
+- Geometry is unchanged from the centered-display C.04 release. The BOM builder checks its SHA-256 before resolving the current mapping.
+- EN/PT/ES pages contain the complete catalog and localized CSV links. Material information and CSV downloads remain available without WebGL. Search, category filtering, grid/table switching, and the native dialog are implemented in the catalog controller.
+- Automated checks exercise every item's GPU-buffer preparation and independent camera with finite uniforms at desktop/card/mobile sizes. A representative 6805 bearing measures 37 × 37 × 7 mm. Index ranges, BOM translation coverage, output counts and shared geometry request are checked.
+- Existing runtime/locale checks and head-motion tests pass. Browser and actual GPU rendering were not tested in this change.
+- The optional mechanical rebuild check cannot run in this checkout because the supplier STEP-derived cache is absent. No mechanical source or model geometry was changed; previous physical validation limits still apply.

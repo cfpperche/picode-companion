@@ -4,7 +4,7 @@ from html.parser import HTMLParser
 import json
 from pathlib import Path
 import re
-from build_locales import ROOT, LANGUAGES, Translator
+from build_locales import ROOT, LANGUAGES, Translator, read_template
 
 
 class Page(HTMLParser):
@@ -20,7 +20,7 @@ class Page(HTMLParser):
 
 
 def check():
-    source = (ROOT / 'src/index.html').read_text()
+    source = read_template()
     catalogs = {lang: json.loads((ROOT / 'locales' / f'{lang}.json').read_text()) for lang in LANGUAGES}
     for lang, meta in LANGUAGES.items():
         catalog = catalogs[lang]
@@ -53,7 +53,7 @@ def check():
                 assert target.exists(), ref
         assert catalog['Your agents.'] in actual
         assert catalog['The scale refers to the geometric model. This revision is not yet released for manufacturing.'] in actual
-        for filename in ('viewer.js', 'app.js'):
+        for filename in ('viewer.js', 'app.js', 'catalog.js', 'part-renderer.js'):
             script = (ROOT / 'public' / filename).read_text()
             for key in re.findall(r'''\bt\(["']([^"']+)["']\)''', script):
                 assert key in catalog, f'{lang}: missing dynamic message {key}'
