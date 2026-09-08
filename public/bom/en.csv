@@ -7,7 +7,7 @@ ENC-05,Elastomer feet,Enclosure,4,pcs,Non-slip feet; material and hardness to be
 ENC-06,Camera shutter,Enclosure,1,pcs,Sliding privacy cover with grip grooves.,Proposed part,
 ENC-07,Shutter rail,Enclosure,1,pcs,Proposed guide for the sliding shutter.,Proposed part,
 ELE-01,Compute Module 5 · 8 GB,Electronics,1,pcs,55 × 40 mm module; storage and wireless variant to be confirmed.,Simplified reference,https://www.raspberrypi.com/products/compute-module-5/
-ELE-02,CM5-NANO-B carrier,Electronics,1,pcs,"Provisional 55 × 41 mm envelope, connectors and I/O reserves.",Simplified reference,https://www.waveshare.com/cm5-nano-b.htm
+ELE-02,CM5-NANO-B carrier,Electronics,1,pcs,Nominal board: 55 × 41 mm. Connector positions and I/O geometry remain provisional.,Simplified reference,https://www.waveshare.com/cm5-nano-b.htm
 ELE-03,4″ HDMI LCD (C),Electronics,1,pcs,720 × 720 px · 84 × 84 mm glass · 72.53 × 72.53 mm active area.,Simplified reference,https://www.waveshare.com/4inch-hdmi-lcd-c.htm
 ELE-04,Camera Module 3,Electronics,1,pcs,25 × 24 × 11.5 mm envelope; lens and connector simplified.,Simplified reference,https://www.raspberrypi.com/products/camera-module-3/
 ELE-05,ReSpeaker XVF3800 array,Electronics,1,pcs,Supplier model at native scale; includes optional XIAO ESP32S3. Purchase variant remains open.,Supplier model,https://wiki.seeedstudio.com/respeaker_xvf3800_introduction/#resources
@@ -16,7 +16,7 @@ ELE-07,VL53L1X distance sensor,Electronics,1,pcs,Provisional 13 × 18 mm carrier
 ELE-08,Ambient light sensor,Electronics,1,pcs,20 × 20 mm reserved space; module not selected.,To specify,
 ELE-09,Heat sink,Electronics,1,pcs,55 × 40 × 12 mm thermal reserve; cooling not validated.,To specify,
 ELE-10,40 mm fan,Electronics,1,pcs,40 × 40 × 10 mm reserve; electrical specification to be selected.,To specify,
-MOT-01,SC09 positional microservo,Motion,1,pcs,34 × 16 × 34 mm conservative body reserve; 6 V motor rail.,Simplified reference,https://www.waveshare.com/wiki/SC09_Servo
+MOT-01,SC09 positional microservo,Motion,1,pcs,Supplier body: 23.2 × 12 × 25.5 mm. Model reserve: 34 × 16 × 34 mm; shaft and mounting not verified. 6 V motor rail.,Simplified reference,https://www.waveshare.com/wiki/SC09_Servo
 MOT-02,72-tooth drive pulley,Motion,1,pcs,GT2 · 2 mm pitch · illustrative teeth; hub attachment to be designed.,Proposed part,
 MOT-03,48-tooth output pulley,Motion,1,pcs,GT2 · 1.5:1 head/servo angle ratio; tooth profile is illustrative.,Proposed part,
 MOT-04,GT2 drive belt,Motion,1,pcs,220 mm nominal length × 6 mm width; tension adjustment pending.,Simplified reference,

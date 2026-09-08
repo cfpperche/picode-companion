@@ -133,7 +133,7 @@
       "category": "Electronics",
       "quantity": 1,
       "unit": "pcs",
-      "specification": "Provisional 55 × 41 mm envelope, connectors and I/O reserves.",
+      "specification": "Nominal board: 55 × 41 mm. Connector positions and I/O geometry remain provisional.",
       "status": "Simplified reference",
       "selectors": {
         "indices": [
@@ -966,7 +966,7 @@
       "category": "Motion",
       "quantity": 1,
       "unit": "pcs",
-      "specification": "34 × 16 × 34 mm conservative body reserve; 6 V motor rail.",
+      "specification": "Supplier body: 23.2 × 12 × 25.5 mm. Model reserve: 34 × 16 × 34 mm; shaft and mounting not verified. 6 V motor rail.",
       "status": "Simplified reference",
       "selectors": {
         "indices": [

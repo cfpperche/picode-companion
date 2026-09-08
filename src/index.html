@@ -14,6 +14,7 @@
   <script src="/locales/runtime.js" defer></script>
   <script src="/motion.js" defer></script>
   <script src="/model.js" defer></script>
+  <script src="/view-geometry.js" defer></script>
   <script src="/viewer.js" defer></script>
   <script src="/part-renderer.js" defer></script>
   <script src="/catalog.js" defer></script>
@@ -41,6 +42,7 @@
         <span class="scene-watermark" aria-hidden="true">C.04</span>
         <div class="pcc-stage" data-nojs="Enable JavaScript to explore the 3D model.">
           <canvas id="pcc-canvas" tabindex="0" role="img" aria-label="PiCode Companion in 3D. Graphite enclosure, square display, six keys, metal lever and top speaker. Drag or use the arrow keys to rotate; plus and minus adjust zoom."></canvas>
+          <img id="pcc-static" src="/assets/parts/assembly-exterior.svg" width="960" height="640" alt="Static model preview" hidden>
           <svg id="pcc-overlay" aria-hidden="true"></svg>
           <div id="pcc-loading" role="status"><span class="loading-mark">pi_</span><span>Preparing your Companion…</span></div>
         </div>
@@ -49,7 +51,7 @@
         <div class="explode-control" id="explode-control" hidden><label for="pcc-explode">Part separation <output id="explode-value">100%</output></label><input type="range" id="pcc-explode" min="0" max="100" value="100"></div>
       </div>
       <div class="scene-bottom">
-        <div class="view-control"><label for="pcc-view">View</label><select id="pcc-view"><option value="iso">Perspective</option><option value="front">Front</option><option value="left">Microphones · left</option><option value="right">Right side</option><option value="back">Rear</option><option value="top">Speaker · top</option></select></div>
+        <div class="view-control"><label for="pcc-view">View</label><select id="pcc-view"><option value="iso">3/4 view</option><option value="front">Front</option><option value="left">Microphones · left</option><option value="right">Right side</option><option value="back">Rear</option><option value="top">Speaker · top</option></select></div>
         <label class="dimensions-toggle"><input type="checkbox" id="pcc-isolate"><span class="switch" aria-hidden="true"></span> Isolate component</label><span class="gesture-help">Drag to rotate · scroll to zoom</span>
         <label class="dimensions-toggle"><input type="checkbox" id="pcc-dims"><span class="switch" aria-hidden="true"></span> Dimensions</label>
       </div>

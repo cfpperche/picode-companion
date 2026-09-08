@@ -7,7 +7,7 @@ ENC-05,Pés de elastômero,Carcaça,4,un.,Pés antiderrapantes; material e durez
 ENC-06,Obturador da câmera,Carcaça,1,un.,Cobertura deslizante de privacidade com ranhuras de apoio.,Peça proposta,
 ENC-07,Trilho do obturador,Carcaça,1,un.,Guia proposto para o obturador deslizante.,Peça proposta,
 ELE-01,Compute Module 5 · 8 GB,Eletrônica,1,un.,Módulo de 55 × 40 mm; armazenamento e variante sem fio a confirmar.,Referência simplificada,https://www.raspberrypi.com/products/compute-module-5/
-ELE-02,Placa portadora CM5-NANO-B,Eletrônica,1,un.,"Envelope provisório de 55 × 41 mm, conectores e reservas de E/S.",Referência simplificada,https://www.waveshare.com/cm5-nano-b.htm
+ELE-02,Placa portadora CM5-NANO-B,Eletrônica,1,un.,Placa nominal: 55 × 41 mm. Posições dos conectores e geometria de E/S ainda provisórias.,Referência simplificada,https://www.waveshare.com/cm5-nano-b.htm
 ELE-03,LCD HDMI (C) de 4″,Eletrônica,1,un.,"720 × 720 px · vidro de 84 × 84 mm · área ativa de 72,53 × 72,53 mm.",Referência simplificada,https://www.waveshare.com/4inch-hdmi-lcd-c.htm
 ELE-04,Camera Module 3,Eletrônica,1,un.,"Envelope de 25 × 24 × 11,5 mm; lente e conector simplificados.",Referência simplificada,https://www.raspberrypi.com/products/camera-module-3/
 ELE-05,Matriz ReSpeaker XVF3800,Eletrônica,1,un.,Modelo do fornecedor em escala nativa; inclui XIAO ESP32S3 opcional. Variante de compra em aberto.,Modelo do fornecedor,https://wiki.seeedstudio.com/respeaker_xvf3800_introduction/#resources
@@ -16,7 +16,7 @@ ELE-07,Sensor de distância VL53L1X,Eletrônica,1,un.,Portadora provisória de 1
 ELE-08,Sensor de luz ambiente,Eletrônica,1,un.,Espaço reservado de 20 × 20 mm; módulo não selecionado.,A definir,
 ELE-09,Dissipador de calor,Eletrônica,1,un.,Reserva térmica de 55 × 40 × 12 mm; refrigeração não validada.,A definir,
 ELE-10,Ventoinha de 40 mm,Eletrônica,1,un.,Reserva de 40 × 40 × 10 mm; especificação elétrica a selecionar.,A definir,
-MOT-01,Microservo posicional SC09,Movimento,1,un.,Reserva conservadora do corpo de 34 × 16 × 34 mm; alimentação do motor em 6 V.,Referência simplificada,https://www.waveshare.com/wiki/SC09_Servo
+MOT-01,Microservo posicional SC09,Movimento,1,un.,"Corpo do fornecedor: 23,2 × 12 × 25,5 mm. Reserva no modelo: 34 × 16 × 34 mm; eixo e fixação não verificados. Alimentação de 6 V.",Referência simplificada,https://www.waveshare.com/wiki/SC09_Servo
 MOT-02,Polia motora de 72 dentes,Movimento,1,un.,GT2 · passo de 2 mm · dentes ilustrativos; fixação do cubo a projetar.,Peça proposta,
 MOT-03,Polia de saída de 48 dentes,Movimento,1,un.,"GT2 · relação angular cabeça/servo de 1,5:1; perfil dos dentes ilustrativo.",Peça proposta,
 MOT-04,Correia de transmissão GT2,Movimento,1,un.,Comprimento nominal de 220 mm × largura de 6 mm; ajuste de tensão pendente.,Referência simplificada,

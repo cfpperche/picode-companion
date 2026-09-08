@@ -103,8 +103,8 @@
   ],
   "assembly": "C.03 head and electronics on C.04 rotating tray; fixed keyboard/base; independent motor supply and 3:2 belt drive.",
   "validation": {
-    "parts": 998,
-    "triangles": 279856,
+    "parts": 981,
+    "triangles": 278870,
     "bounds_mm": [
       160.0,
       183.95,

@@ -28,6 +28,7 @@
     $('pcc-dims').checked = value === 'specs';
     $('pcc-dims').dispatchEvent(new Event('change'));
     activeComponent = 'all';
+    $('pcc-isolate').checked = false;
     $('selection-note').hidden = true;
     dispatch('pcc-component', 'all');
     updateSelection();
@@ -39,6 +40,9 @@
     });
   }
   function selectComponent(key) {
+    const isolate = $('pcc-isolate').checked;
+    if (key === 'compute' && activeMode === 'exterior') { switchMode('inside'); $('pcc-isolate').checked = isolate; }
+    if (key === 'all') $('pcc-isolate').checked = false;
     activeComponent = key;
     $('selection-note').hidden = key === 'all';
     $('pcc-shutter').hidden = key !== 'camera';
@@ -64,6 +68,7 @@
     });
     window.PiCodeViewer?.setFinish(activeFinish);
   }));
+  $('pcc-isolate').addEventListener('change', () => { if ($('pcc-isolate').checked && activeComponent === 'all') selectComponent('compute'); });
   $('pcc-explode').addEventListener('input', event => {
     const value = Number(event.target.value);
     $('explode-value').value = value + '%';
