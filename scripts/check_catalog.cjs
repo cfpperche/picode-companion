@@ -41,7 +41,7 @@ for(const lang of ['en','pt','es']){
 }
 (async()=>{
  let fetches=0;
- const loader={window:{},Uint8Array,Blob,Response,DecompressionStream,atob:context.atob,fetch:async()=>{fetches++;return new Response(read('public/assets/companion-c04.b64'));}};
+ const loader={AbortController,setTimeout,clearTimeout,window:{},Uint8Array,Blob,Response,DecompressionStream,atob:context.atob,fetch:async()=>{fetches++;return new Response(read('public/assets/companion-c04.b64'));}};
  vm.runInNewContext(read('public/model.js'),loader);
  const first=loader.window.PiCodeModel.load(),second=loader.window.PiCodeModel.load();assert.equal(first,second);
  const loaded=await first;assert.equal(loaded.length,981);assert.equal(fetches,1);
